@@ -6,7 +6,7 @@
 #    By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 12:30:07 by rduro-pe          #+#    #+#              #
-#    Updated: 2025/01/03 14:42:37 by rduro-pe         ###   ########.fr        #
+#    Updated: 2025/01/03 16:53:25 by rduro-pe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,12 +17,12 @@ MLX = ./inc/minilibx_linux/libmlx.a
 
 
 # ★☆★-‵,┊( TO DO )┊.´-★☆★
-#	make it compile
+#	parsing
 
 
 # ★☆★-‵,┊( SOURCES AND OBJS )┊.´-★☆★
-MAIN    =   
-SOURCES =	so_long_main.c
+MAIN    =   so_long_main.c
+SOURCES =	test.c
 
 SRCS_DIR = srcs
 SRCS = $(addprefix $(SRCS_DIR)/, $(SOURCES))

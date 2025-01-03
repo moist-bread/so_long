@@ -5,41 +5,81 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 12:23:43 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/03 15:23:37 by rduro-pe         ###   ########.fr       */
+/*   Created: 2025/01/03 16:15:33 by rduro-pe          #+#    #+#             */
+/*   Updated: 2025/01/03 17:29:59 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	*mlx;
-void	*mlx_win;
+int map_parsing(char *map_file, t_map **map);
+void row_check(int fd, t_map *map);
+t_map *set_map_struct(void);
 
-int	key_win1(int key, void *p)
+int main (int argc, char **argv)
 {
-	(void)p;
-	if (key == 0xFF1B)
-	{
-		mlx_destroy_window(mlx, mlx_win);
-		exit(0);
-	}
-	return (0);
+	t_map *map;
+	
+	if (argc != 2)
+		return(1);
+	map_parsing(argv[1], &map);
+	return(0);
 }
 
-int	main(int argc, char **argv)
+int map_parsing(char *map_file, t_map **map)
 {
-	(void)argc;
-	(void)argv;
+	int map_fd;
 
-	// initialize
-	if (!(mlx = mlx_init()))
-		exit(1);
-	// pop up with xy dimentions and name
-	if (!(mlx_win = mlx_new_window(mlx, 1920, 1080, "window")))
-		exit(1);
-	// write on the window with xy coordinates, and color, a sentence
-	mlx_string_put(mlx, mlx_win, 200, 1080 / 2, 0xFF99FF, "lorem ipsum");
-	// detect key presses, in this case ESC key
-	mlx_key_hook(mlx_win, key_win1, 0);
-	mlx_loop(mlx);
+	*map = set_map_struct();
+	if (!*map)
+		return(0);
+	map_fd = open(map_file, O_RDONLY);
+	row_check(map_fd, *map);
+	close(map_fd);
+	if((*map)->heigth <= 2 || (*map)->error)
+		return(0);
+	map_fd = open(map_file, O_RDONLY);
+
+	close(map_fd);
+	return(1);
+}
+
+void row_check(int fd, t_map *map)
+{
+	char *map_row;
+	int end_flag;
+
+	end_flag = 0;
+	while(!map->error)
+	{
+		map_row = get_next_line(fd);
+		if (!map_row)
+			break;
+		if(map->heigth == 0)
+			map->width = ft_strlen(map_row);
+		else if (map->width != ft_strlen(map_row))
+			map->error++;
+		map->heigth++;
+		ft_printf("map_row %d: %s", map->heigth, map_row);
+		free(map_row);
+	}
+}
+
+t_map *set_map_struct(void)
+{
+	t_map *map;
+
+	map = malloc(sizeof(t_map));
+	if (!map)
+		return(NULL);
+	map->map = NULL;
+	map->empty = 0;
+	map->wall = 0;
+	map->colt = 0;
+	map->exit = 0;
+	map->ps = 0;
+	map->heigth = 0;
+	map->width = 0;
+	map->error = 0;
+	return(map);
 }

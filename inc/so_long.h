@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 10:31:49 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/03 13:00:29 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/03 17:25:43 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,19 @@
 # include <unistd.h>
 
 // STRUCTS
-typedef struct s_stacks
+typedef struct s_map
 {
-	int		*a;
-	int		atop_id;
-	int		*b;
-	int		btop_id;
-}			t_stacks;
+	char	**map;
+	int		empty;
+	int		wall;
+	int		colt;
+	int		exit;
+	int		ps;
+	int		heigth;
+	size_t	width;
+	int		error;
+}			t_map;
 
 // TBD
-
 
 #endif
