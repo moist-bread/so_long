@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 10:31:49 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/06 16:48:55 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/07 19:21:46 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,26 +23,48 @@
 # include <unistd.h>
 
 // STRUCTS
+typedef struct s_cord
+{
+	int		y;
+	int		x;
+}			t_cord;
+
 typedef struct s_map
 {
 	char	**map;
 	int		empty;
-	int		wall;
+	int		walls;
 	int		colt;
 	int		exit;
+	t_cord	exit_cord;
 	int		ps;
+	t_cord	ps_cord;
 	int		heigth;
 	int		width;
 	int		error;
 }			t_map;
 
 // TBD
+
+// MAP PARSING
 int			map_parsing(char *map_file, t_map **map);
 void		row_check(int fd, t_map *map);
-t_map		*set_map_struct(void);
-void		print_map(t_map *map);
-void		make_map(int fd, t_map *map);
 int			row_len(char *str);
+void		valid_path_check(int seen_colt, t_map *map);
+void		error_exit(int ret, t_map *map);
+
+// MAKE MAP
+void		make_map(int fd, t_map *map);
+t_map		*set_map_struct(void);
 void		free_map(t_map *map, int max);
+void		print_map(t_map *map);
+void		print_map_elems(t_map *map);
+
+// MAP FULL CHECK
+void		map_full_check(t_map *map);
+void		map_wall_check(t_map *map);
+void		map_elem_count(t_map *map);
+void		is_e_or_ps(int y, int x, t_map *map, int type);
+int			map_flood_fill(int y, int x, t_map *map);
 
 #endif
