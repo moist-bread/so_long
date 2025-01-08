@@ -6,7 +6,7 @@
 #    By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 12:30:07 by rduro-pe          #+#    #+#              #
-#    Updated: 2025/01/07 18:15:33 by rduro-pe         ###   ########.fr        #
+#    Updated: 2025/01/08 14:06:09 by rduro-pe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ MLX = ./inc/minilibx_linux/libmlx.a
 
 
 # ★☆★-‵,┊( TO DO )┊.´-★☆★
-#	parsing
+#	windows
 
 
 # ★☆★-‵,┊( SOURCES AND OBJS )┊.´-★☆★
@@ -37,9 +37,9 @@ OBJS_MAIN = $(addprefix $(OBJS_DIR)/, $(MAIN:.c=.o))
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 MLXFLAGS = -L ./inc/minilibx_linux -lmlx_Linux -lX11 -lXext
-#-Lminilibx-linux -lmlx_Linux -lX11 -lXext
+#-Lminilibx-linux   -lmlx_Linux -lX11 -lXext
 #-L ./libs/minilibx -lmlx -Ilmlx -lXext -lX11
-#-L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+#-L/usr/lib         -Imlx_linux -lXext -lX11 -lm -lz
 
 
 # ★☆★-‵,┊( MAIN RULES )┊.´-★☆★
@@ -59,12 +59,15 @@ $(LIBFT):
 	@make -C ./inc/libft -s
 
 $(MLX):
+	$(M_COMMLXOBJS)
 	@make -C ./inc/minilibx_linux -s
+	$(M_ARCMLX)
 
 
 # ★☆★-‵,┊( STANDARD RULES )┊.´-★☆★
 clean:
 	@make clean -C ./inc/libft -s
+	$(M_REMMLXOBJS)
 	@make clean -C ./inc/minilibx_linux -s
 	$(M_REMOBJS)
 	@rm -rf $(OBJS_DIR)
@@ -72,9 +75,9 @@ clean:
 fclean: clean
 	$(M_REMLIB)
 	@rm -rf $(LIBFT)
+	$(M_REMMLX)
 	$(M_REM)
 	@rm -rf $(NAME)
-	@rm -rf $(BONUS)
 
 re:	fclean all
 	@echo "Re-Done!!"
@@ -89,13 +92,15 @@ DEF	=	\e[0;39m
 GRY	=	\e[0;30m
 BLU	=	\e[0;34m
 GRN	=	\e[0;32m
+YEL =	\e[0;33m
 
 #-‵,┊ bold colors
 BCYN	=	\e[1;36m
-
+BHMAG	=	\e[1;95m
 #-‵,┊ background colors
 CYNB	=	\e[46m
 YELB	=	\e[43m
+MAGHB	=	\e[0;105m
 
 #-‵,┊ names
 PH = placeholder
@@ -108,6 +113,11 @@ M_COMBONUS = @echo "$(GRY)-->┊$(GRN)  Compiling: $(DEF)$(CYNB) $(NAME)/bonus $
 M_REMOBJS = @echo "$(GRY)-->┊$(BLU)  Removing: $(BCYN) $(NAME)/objs $(GRY)$(DEF)"
 M_REMLIB = @echo "$(GRY)-->┊$(BLU)  Removing: $(DEF)$(YELB) libft.a $(GRY)$(DEF)"
 M_REM = @echo "$(GRY)-->┊$(BLU)  Removing: $(DEF)$(CYNB) $(NAME) $(GRY)$(DEF)"
+M_COMMLXOBJS = @echo "$(GRY)-->┊$(GRN)  Compiling: $(BHMAG) libmlx.a/objs $(GRY)$(DEF)"
+M_ARCMLX = @echo "$(GRY)-->┊$(YEL)  Archiving: $(DEF)$(MAGHB) libmlx.a $(GRY)$(DEF)"
+M_REMMLX = @echo "$(GRY)-->┊$(BLU)  Removing: $(DEF)$(MAGHB) libmlx.a $(GRY)$(DEF)"
+M_REMMLXOBJS = @echo "$(GRY)-->┊$(BLU)  Removing: $(BHMAG) libmlx.a/objs $(GRY)$(DEF)"
+
 
 #-‵,┊ tester
 test:
@@ -118,4 +128,7 @@ test:
 	$(M_REMOBJS)
 	$(M_REMLIB)
 	$(M_REM)
-	
+	$(M_COMMLXOBJS)
+	$(M_ARCMLX)
+	$(M_REMMLX)
+	$(M_REMMLXOBJS)	
