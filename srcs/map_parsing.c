@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 16:38:04 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/07 19:22:21 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/08 13:10:10 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,25 @@ int	map_parsing(char *map_file, t_map **map)
 {
 	int	map_fd;
 
+	*map = set_map_struct();
+	if (!*map)
+		return (error_exit(1, *map), 1);
 	map_fd = open(map_file, O_RDONLY);
 	//		checks if file exists and if it's .ber
 	if (map_fd < 3 || ft_strncmp(".ber", map_file + ft_strlen(map_file) - 4, 4))
-		return (close(map_fd), 2);
-	*map = set_map_struct();
-	if (!*map)
-		return (close(map_fd), 1);
+		return (close(map_fd), error_exit(2, *map), 2);
 	//		gives map heigth and if theyre all the same len
 	row_check(map_fd, *map); // -make it return in case of malloc error
 	close(map_fd);
 	if ((*map)->heigth <= 2 || (*map)->error)
-		return (3); // -add error and error message
+		return (error_exit(3, *map), 3);
 	map_fd = open(map_file, O_RDONLY);
-	make_map(map_fd, *map); // -make it return in case of malloc error
+	if (make_map(map_fd, *map))
+		return (close(map_fd), error_exit(1, *map), 1);
 	//		checks all map misconfiguration errors
 	map_full_check(*map);
-	if ((*map)->error)
-		return (error_exit(4, *map), 4); // -add error and error message
-	close(map_fd);
+	if (!close(map_fd) && (*map)->error)
+		return (error_exit((*map)->error, *map), 4);
 	return (0);
 }
 
@@ -50,7 +50,7 @@ void	row_check(int fd, t_map *map)
 		if (map->heigth == 0)
 			map->width = row_len(map_row);
 		else if (map->width != row_len(map_row))
-			map->error++;
+			map->error = 3;
 		map->heigth++;
 		free(map_row);
 	}
@@ -83,16 +83,17 @@ void	valid_path_check(int seen_colt, t_map *map)
 			&& map->map[map->exit_cord.y][map->exit_cord.x - 1] != 'P'))
 		map->error = 7;
 }
+
 // error meanings ~
 // 1: malloc problems
 // 2: incorrect file input
-// 3: map not square or too short
+// 3: map not rectangle or too short
 // 4: no surrounding walls
 // 5: invalid characters
 // 6: duplicates or no colt
 // 7: no path
 
-void error_exit(int ret, t_map *map)
+void	error_exit(int ret, t_map *map)
 {
 	ft_printf("Error\n");
 	if (ret == 1)
@@ -103,15 +104,16 @@ void error_exit(int ret, t_map *map)
 		ft_printf("\nGiven Map doesn't have enough rows\n");
 	else if (ret == 3)
 		ft_printf("\nGiven Map isn't rectangular\n");
-	else if (map->error == 4)
+	else if (ret == 4)
 		ft_printf("\nGiven Map doesn't have surrounding walls\n");
-	else if (map->error == 5)
+	else if (ret == 5)
 		ft_printf("\nGiven Map contains invalid characters\n");
-	else if (map->error == 6)
+	else if (ret == 6)
 		ft_printf("\nGiven Map contains incorrect amount of elements\n");
-	else if (map->error == 7)
+	else if (ret == 7)
 		ft_printf("\nGiven Map has no valid path\n");
-	if (map->error)
+	if (map->error || map->heigth <= 2)
 		free_map(map, map->heigth);
-	
+	ft_printf("exit(%d)\n", ret);
+	exit(ret);
 }

@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:05:32 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/07 19:15:11 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/08 13:05:45 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_map	*set_map_struct(void)
 	return (map);
 }
 
-void	make_map(int fd, t_map *map)
+int	make_map(int fd, t_map *map)
 {
 	char	*map_row;
 	int		i;
@@ -43,16 +43,17 @@ void	make_map(int fd, t_map *map)
 	i = -1;
 	map->map = malloc((map->heigth + 1) * sizeof(char *));
 	if (!map)
-		return ;
+		return (1);
 	while (++i < map->heigth)
 	{
 		map_row = get_next_line(fd);
-		if (!map_row) // see if its malloc error
+		if (!map_row)
 			break ;
 		map->map[i] = map_row;
 	}
 	map->map[i] = NULL;
 	print_map(map);
+	return (0);
 }
 
 void	free_map(t_map *map, int max)
@@ -60,9 +61,12 @@ void	free_map(t_map *map, int max)
 	int	i;
 
 	i = 0;
-	while (i <= max)
-		free(map->map[i++]);
-	free(map->map);
+	if (map->error != 1 && map->heigth > 2)
+	{
+		while (i <= max)
+			free(map->map[i++]);
+		free(map->map);
+	}
 	free(map);
 }
 

@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 10:31:49 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/07 19:21:46 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/08 13:11:12 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_map
 }			t_map;
 
 // TBD
+void game_start(t_map *map);
 
 // MAP PARSING
 int			map_parsing(char *map_file, t_map **map);
@@ -54,8 +55,8 @@ void		valid_path_check(int seen_colt, t_map *map);
 void		error_exit(int ret, t_map *map);
 
 // MAKE MAP
-void		make_map(int fd, t_map *map);
 t_map		*set_map_struct(void);
+int			make_map(int fd, t_map *map);
 void		free_map(t_map *map, int max);
 void		print_map(t_map *map);
 void		print_map_elems(t_map *map);
