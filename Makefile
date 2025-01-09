@@ -6,7 +6,7 @@
 #    By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 12:30:07 by rduro-pe          #+#    #+#              #
-#    Updated: 2025/01/08 14:06:09 by rduro-pe         ###   ########.fr        #
+#    Updated: 2025/01/09 15:37:24 by rduro-pe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,6 +63,8 @@ $(MLX):
 	@make -C ./inc/minilibx_linux -s
 	$(M_ARCMLX)
 
+exe: all
+	./so_long map.ber
 
 # ★☆★-‵,┊( STANDARD RULES )┊.´-★☆★
 clean:

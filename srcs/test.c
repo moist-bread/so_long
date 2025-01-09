@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:23:43 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/03 16:50:59 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/09 15:32:47 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	*mlx;
 void	*mlx_win;
 
-int	key_win1(int key, void *p)
+/* int	key_win1(int key, void *p)
 {
 	(void)p;
 	if (key == 0xFF1B)
@@ -24,7 +24,7 @@ int	key_win1(int key, void *p)
 		exit(0);
 	}
 	return(0);
-}
+} */
 
 int	window_test(void)
 {
