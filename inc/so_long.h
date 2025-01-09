@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 10:31:49 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/09 15:33:35 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/09 17:32:14 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_map
 // TBD
 void game_start(t_map *map);
 int	key_win1(int key, void *p);
+void make_grid(char *addr, int line_length, int bits_per_pixel);
 
 // MAP PARSING
 int			map_parsing(char *map_file, t_map **map);
