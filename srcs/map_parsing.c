@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 16:38:04 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/08 13:10:10 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/13 17:55:11 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ int	map_parsing(char *map_file, t_map **map)
 	//		gives map heigth and if theyre all the same len
 	row_check(map_fd, *map); // -make it return in case of malloc error
 	close(map_fd);
-	if ((*map)->heigth <= 2 || (*map)->error)
+	if ((*map)->heigth <= 2 || (*map)->width <= 2 || (*map)->error)
+		return (error_exit(3, *map), 3);
+	if ((*map)->heigth <= 2 || (*map)->width <= 2)
 		return (error_exit(3, *map), 3);
 	map_fd = open(map_file, O_RDONLY);
 	if (make_map(map_fd, *map))
@@ -87,7 +89,7 @@ void	valid_path_check(int seen_colt, t_map *map)
 // error meanings ~
 // 1: malloc problems
 // 2: incorrect file input
-// 3: map not rectangle or too short
+// 3: map not rectangle or too short or too big
 // 4: no surrounding walls
 // 5: invalid characters
 // 6: duplicates or no colt
@@ -101,7 +103,9 @@ void	error_exit(int ret, t_map *map)
 	else if (ret == 2)
 		ft_printf("\nGiven file isn't .ber and or doesn't exists\n");
 	else if (map->heigth <= 2)
-		ft_printf("\nGiven Map doesn't have enough rows\n");
+		ft_printf("\nGiven Map doesn't have enough rows or columns\n");
+	else if (map->heigth > 22 || map->width > 40)
+		ft_printf("\nGiven Map is too big (limit of 40x22)\n");
 	else if (ret == 3)
 		ft_printf("\nGiven Map isn't rectangular\n");
 	else if (ret == 4)
