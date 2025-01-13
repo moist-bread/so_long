@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 16:15:33 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/13 19:03:31 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/13 23:37:56 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ void	game_start(t_map *map)
 	mlx_loop(game->mlx);
 }
 
+void	sprite_to_bg_img(t_game *game, void *sprite, int x, int y)
+{
+}
+
 void	put_border(t_game *game, t_map *map)
 {
 	int	y;
@@ -46,7 +50,7 @@ void	put_border(t_game *game, t_map *map)
 	x = 0;
 	while ((!game->offset && ++x < map->width + 2) || (game->offset
 			&& ++x < 21))
-	{
+	{ // replace with sprite_to_bg_img(game, game->sprite->border, x, y);
 		mlx_put_image_to_window(game->mlx, game->win, game->sprite->colt, (x
 				* game->spr_size) + game->offset, 0);
 		mlx_put_image_to_window(game->mlx, game->win, game->sprite->colt, (x
@@ -146,7 +150,7 @@ void	game_stort_test(t_map *map)
 	// void	*img2;
 	// int		img_width;
 	// int		img_height;
-	relative_path = "./assets/beetles.xpm";
+	relative_path = "./assets/big/beetles.xpm";
 	// initialize
 	if (!(mlx = mlx_init()))
 		exit(1); // -make it free
@@ -166,7 +170,8 @@ void	game_stort_test(t_map *map)
 	// make_grid(addr, line_length, bits_per_pixel);
 	make_square(addr, line_length, bits_per_pixel);
 	// putting the xpm file in the img2
-	// img2 = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
+	// img2 = mlx_xpm_file_to_image(mlx, relative_path, &img_width,
+	// &img_height);
 	// put the layers in the window
 	mlx_put_image_to_window(mlx, mlx_win, img, 0, 0);
 	// mlx_put_image_to_window(mlx, mlx_win, img2, 15, 0);
