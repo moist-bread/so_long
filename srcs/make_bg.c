@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 15:31:05 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/14 18:14:01 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/14 18:30:32 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	sprite_to_bg_img(t_game *game, t_data *sprite, int x, int y)
 		while (++wid <= game->spr_size)
 		{
 			color = get_pixel(sprite, wid, hei);
-			ft_printf("why are we still here, just to suffer\n");
-			put_pixel(game->bg, x + wid, y + hei, color);
+			ft_printf("why are we still here, just to suffer 1\n");
+			put_pixel(game->bg, x + wid, y + hei, 0x0065E0E1);
 		}	
 	}
 }
@@ -107,20 +107,22 @@ void	put_sprite(t_game *game, int y, int x, int type)
 			* game->spr_size);
 }
 
-int get_pixel(t_data *data, int x, int y)
+int get_pixel(t_data *img, int x, int y)
 {
 	char	*dst;
 
-	dst = data->addr + (y * data->len + x * (data->bpp / 8));
+	dst = img->addr + (y * img->len + x * (img->bpp / 8));
 	return (*(unsigned int *)dst);
 }
 
-void	put_pixel(t_data *data, int x, int y, int color)
+void	put_pixel(t_data *img, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = data->addr + (y * data->len + x * (data->len / 8));
+	
+	dst = img->addr + (y * img->len + x * (img->bpp / 8));
 	*(unsigned int *)dst = color;
+	ft_printf("why are we still here, just to suffer 2\n");
 }
 
 // GET COLOR THING
