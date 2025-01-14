@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 16:38:04 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/13 17:55:11 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/14 17:19:48 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	map_parsing(char *map_file, t_map **map)
 	close(map_fd);
 	if ((*map)->heigth <= 2 || (*map)->width <= 2 || (*map)->error)
 		return (error_exit(3, *map), 3);
-	if ((*map)->heigth <= 2 || (*map)->width <= 2)
+	if ((*map)->heigth > 22 || (*map)->width > 40)
 		return (error_exit(3, *map), 3);
 	map_fd = open(map_file, O_RDONLY);
 	if (make_map(map_fd, *map))

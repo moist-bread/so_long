@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 16:40:45 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/13 14:40:02 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/14 15:35:02 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ int	map_flood_fill(int y, int x, t_map *map)
 {
 	int	colt;
 
-	// ft_printf("flooding the fill\n");
 	if (y < 1 || y >= map->heigth - 1 || x < 1 || x >= map->width - 1
 		|| (map->map[y][x] != '0' && map->map[y][x] != 'C'
 			&& map->map[y][x] != 'P'))
