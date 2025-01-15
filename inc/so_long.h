@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 10:31:49 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/14 18:06:17 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/15 19:15:55 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@
 # define SBORDV "./assets/small/border_v.xpm"
 # define SBORDH "./assets/small/border_h.xpm"
 # define SBORDC "./assets/small/border_c.xpm"
+
+# define TRANSPARENT 0xFF000000 // MAKE IT CHROMA KEY
 
 // STRUCTS
 typedef struct s_cord
@@ -101,17 +103,24 @@ typedef struct s_game
 	void	*win;
 	int		offset;
 	int		spr_size;
+	int		collected;
 	t_sprt	*sprite;
 	t_data	*bg;
 	t_data	*fg;
-
+	t_map	*map;
 }			t_game;
 
 // TBD
 void		game_start(t_map *map);
 void		put_pixel(t_data *data, int x, int y, int color);
-int		get_pixel(t_data *data, int x, int y);
-void	sprite_to_bg_img(t_game *game, t_data *sprite, int x, int y);
+int			get_pixel(t_data *data, int x, int y);
+void		sprite_to_bg_img(t_game *game, t_data *sprite, int x, int y);
+void		gap_to_bg_img(t_game *game, t_data *sprite, int x, int y);
+void		sprite_to_fg_img(t_game *game, t_data *sprite, int x, int y);
+void		put_fg(t_game *game, int y, int x, int type);
+int			put_player(t_game *game);
+int			player_move(int key, t_game *game);
+void		move_check(t_game *game, int axis, int dir);
 
 // MAP PARSING
 int			map_parsing(char *map_file, t_map **map);

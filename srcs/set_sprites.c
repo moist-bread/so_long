@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 14:15:02 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/14 17:11:15 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/15 12:10:53 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	set_sprites_bg_big(t_game *game, int gap)
 {
-	game->spr_size = 90;
 	ft_printf("setting big sprites (small map)\n");
 	game->sprite->empty->img = mlx_xpm_file_to_image(game->mlx, EMPTY,
 			&game->spr_size, &game->spr_size);
@@ -38,12 +37,12 @@ void	set_sprites_bg_big(t_game *game, int gap)
 			&game->spr_size, &gap);
 	game->sprite->bord_c->img = mlx_xpm_file_to_image(game->mlx, BORDC, &gap,
 			&gap);
+	game->spr_size = 90;
 }
 
 void	set_sprites_bg_small(t_game *game, int gap)
 {
-	ft_printf("setting sprite size\n");
-	game->spr_size = 45;
+	ft_printf("setting small sprites (big map)\n");
 	game->sprite->empty->img = mlx_xpm_file_to_image(game->mlx, SEMPTY,
 			&game->spr_size, &game->spr_size);
 	game->sprite->wall_v->img = mlx_xpm_file_to_image(game->mlx, SWALLV,
@@ -67,7 +66,6 @@ void	set_sprites_bg_small(t_game *game, int gap)
 	game->sprite->bord_c->img = mlx_xpm_file_to_image(game->mlx, SBORDC, &gap,
 			&gap);
 	game->spr_size = 45;
-	ft_printf("setting small sprites (big map)\n");
 }
 
 void	set_sprites_fg_big(t_game *game, int gap)

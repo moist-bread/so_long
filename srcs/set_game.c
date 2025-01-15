@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 22:06:56 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/14 17:38:05 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/15 16:51:28 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	set_game(t_game **game, t_map *map)
 	*game = malloc(sizeof(t_game));
 	if (!(*game))
 		return (1); // -make it game destroyer
+	(*game)->map = map;
 	(*game)->mlx = mlx_init();
 	if (!(*game)->mlx)
 		return (1); // -make it game destroyer
@@ -52,7 +53,6 @@ void	set_assets(t_game *game, t_map *map)
 	}
 	else
 	{
-		printf("catching right exception\n");
 		set_sprites_bg_small(game, 15);
 		// set_sprites_fg_small(game, 15);
 	}
@@ -88,4 +88,10 @@ void	set_imgs(t_game *game, t_map *map)
 		game->fg->img = mlx_new_image(game->mlx, 1920, 1080);
 	}
 	ft_printf("malloc ground data (success)\n");
+	ft_printf("getting back and fore ground data\n");
+	game->bg->addr = mlx_get_data_addr(game->bg->img, &game->bg->bpp,
+			&game->bg->len, &game->bg->endian);
+	game->fg->addr = mlx_get_data_addr(game->fg->img, &game->fg->bpp,
+			&game->fg->len, &game->fg->endian);
+	ft_printf("get ground data (success)\n");
 }
