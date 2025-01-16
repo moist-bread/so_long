@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 22:06:56 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/15 16:51:28 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/16 12:02:44 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	set_game(t_game **game, t_map *map)
 	*game = malloc(sizeof(t_game));
 	if (!(*game))
 		return (1); // -make it game destroyer
+	(*game)->collected = 0;
 	(*game)->map = map;
 	(*game)->mlx = mlx_init();
 	if (!(*game)->mlx)

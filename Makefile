@@ -6,7 +6,7 @@
 #    By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 12:30:07 by rduro-pe          #+#    #+#              #
-#    Updated: 2025/01/14 17:22:27 by rduro-pe         ###   ########.fr        #
+#    Updated: 2025/01/16 15:11:43 by rduro-pe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,19 +67,19 @@ $(MLX):
 	$(M_ARCMLX)
 
 exe1: all
-	./so_long map1.ber
+	./so_long ./maps/map1.ber
 
 exe2: all
-	./so_long map2.ber
+	./so_long ./maps/map2.ber
 
 exe3: all
-	./so_long map3.ber
+	./so_long ./maps/map3.ber
 
 exe4: all
-	./so_long map4.ber
+	./so_long ./maps/map4.ber
 
 exe5: all
-	./so_long map5.ber
+	./so_long ./maps/map5.ber
 
 # ★☆★-‵,┊( STANDARD RULES )┊.´-★☆★
 clean:

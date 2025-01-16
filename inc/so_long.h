@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 10:31:49 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/15 19:15:55 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/16 17:10:44 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,10 @@ void		put_fg(t_game *game, int y, int x, int type);
 int			put_player(t_game *game);
 int			player_move(int key, t_game *game);
 void		move_check(t_game *game, int axis, int dir);
+void		sprite_to_bg_img_hflip(t_game *game, t_data *sprite, int x, int y);
+void		sprite_to_bg_img_rotr(t_game *game, t_data *sprite, int x, int y);
+void		sprite_to_bg_img_rotl(t_game *game, t_data *sprite, int x, int y);
+void		put_corner(t_game *game);
 
 // MAP PARSING
 int			map_parsing(char *map_file, t_map **map);
