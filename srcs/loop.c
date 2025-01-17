@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 08:57:12 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/17 17:37:36 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/17 18:51:55 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ int	put_player(t_game *game) // change name to something else pls
 		&& game->map->ps_cord.y == game->map->exit_cord.y
 		&& game->map->ps_cord.x == game->map->exit_cord.x)
 	{
-		mlx_destroy_window(game->mlx, game->win);
-		exit(0);
+		game_destroyer(game, game->map);
 	}
 	// mlx_put_image_to_window(game->mlx, game->win, game->fg->img, 0, 0);
 	// sprite_to_fg_img(game, game->sprite->bord, ((game->map->ps_cord.x + 1)
