@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 10:31:49 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/16 17:10:44 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/17 09:10:52 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,20 +111,9 @@ typedef struct s_game
 }			t_game;
 
 // TBD
+
+// MAIN
 void		game_start(t_map *map);
-void		put_pixel(t_data *data, int x, int y, int color);
-int			get_pixel(t_data *data, int x, int y);
-void		sprite_to_bg_img(t_game *game, t_data *sprite, int x, int y);
-void		gap_to_bg_img(t_game *game, t_data *sprite, int x, int y);
-void		sprite_to_fg_img(t_game *game, t_data *sprite, int x, int y);
-void		put_fg(t_game *game, int y, int x, int type);
-int			put_player(t_game *game);
-int			player_move(int key, t_game *game);
-void		move_check(t_game *game, int axis, int dir);
-void		sprite_to_bg_img_hflip(t_game *game, t_data *sprite, int x, int y);
-void		sprite_to_bg_img_rotr(t_game *game, t_data *sprite, int x, int y);
-void		sprite_to_bg_img_rotl(t_game *game, t_data *sprite, int x, int y);
-void		put_corner(t_game *game);
 
 // MAP PARSING
 int			map_parsing(char *map_file, t_map **map);
@@ -171,9 +160,28 @@ void		img_destroyer(t_game *game, t_map *map);
 
 // MAKE BG
 void		put_border(t_game *game, t_map *map);
+void		put_corner(t_game *game);
 void		put_map(t_game *game, t_map *map);
 void		put_sprite(t_game *game, int y, int x, int type);
-void		img_draw(t_game *game, void *image, int x, int y);
+void		put_fg(t_game *game, int y, int x, int type);
+
+// SPRITE TO BG
+void		sprite_to_bg_img(t_game *game, t_data *sprite, int x, int y);
+void		sprite_to_bg_img_hflip(t_game *game, t_data *sprite, int x, int y);
+void		sprite_to_bg_img_vflip(t_game *game, t_data *sprite, int x, int y);
+void		sprite_to_bg_img_rotr(t_game *game, t_data *sprite, int x, int y);
+void		sprite_to_bg_img_rotl(t_game *game, t_data *sprite, int x, int y);
+
+// SPRITE TO HELPERS
+int			get_pixel(t_data *data, int x, int y);
+void		put_pixel(t_data *data, int x, int y, int color);
+void		gap_to_bg_img(t_game *game, t_data *sprite, int x, int y);
+void		sprite_to_fg_img(t_game *game, t_data *sprite, int x, int y);
+
+// LOOP
+int			put_player(t_game *game);
+int			player_move(int key, t_game *game);
+void		move_check(t_game *game, int axis, int dir);
 
 // TESTS
 void		game_stort_test(t_map *map);
