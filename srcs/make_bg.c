@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 15:31:05 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/17 09:10:07 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/17 12:05:38 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,49 @@ void	put_border(t_game *game, t_map *map)
 	}
 }
 
+void	put_in_border(t_game *game)
+{
+	int	y;
+	int	x;
+
+	y = -1;
+	x = -1;
+	while (++y < game->map->heigth)
+	{
+		gap_to_bg_img(game, game->sprite->bord_v, 1 * game->spr_size, (y + 1)
+		* game->spr_size);
+		// gap_to_bg_img(game, game->sprite->bord_h, game->map->width * game->spr_size, (y + 1)
+		// * game->spr_size);
+	}
+	while (++x < game->map->width)
+	{
+		gap_to_bg_img_h(game, game->sprite->bord_h, 500, 500);
+	}
+	/* while ((!game->offset && ++x < game->map->width + 2) || (game->offset
+			&& ((game->spr_size == 90 && ++x < 21) || (game->spr_size == 45
+					&& ++x < 42))))
+	{
+		sprite_to_bg_img_rotl(game, game->sprite->bord, (x * game->spr_size)
+			+ game->offset, 0);
+		sprite_to_bg_img_rotr(game, game->sprite->bord, (x * game->spr_size)
+			+ game->offset, (y - 1) * game->spr_size);
+	}
+	while (--y >= 0)
+	{
+		sprite_to_bg_img(game, game->sprite->bord, game->offset, y
+			* game->spr_size);
+		sprite_to_bg_img_hflip(game, game->sprite->bord, ((x - 1)
+				* game->spr_size) + game->offset, y * game->spr_size);
+		if (game->offset)
+		{
+			gap_to_bg_img(game, game->sprite->bord_v, 0, y * game->spr_size);
+			gap_to_bg_img(game, game->sprite->bord_v, (x * game->spr_size)
+				+ game->offset, y * game->spr_size);
+		}
+	} */
+	(void)game;
+}
+
 void	put_corner(t_game *game)
 {
 	int	y;
@@ -53,19 +96,13 @@ void	put_corner(t_game *game)
 
 	if (game->map->heigth > 10 || game->map->width > 19)
 	{
-		ft_printf("gap\n\n");
 		y = 23 * game->spr_size;
 		x = 42 * game->spr_size - game->offset;
-	}
-	else if (game->map->heigth == 10 || game->map->width == 19)
-	{
-		y = (game->map->heigth + 1) * game->spr_size;
-		x = (game->map->width + 2) * game->spr_size - game->offset;
 	}
 	else
 	{
 		y = (game->map->heigth + 1) * game->spr_size;
-		x = (game->map->width + 1) * game->spr_size;
+		x = (game->map->width + 1) * game->spr_size + 2 * game->offset;
 	}
 	sprite_to_bg_img(game, game->sprite->empty, 0, 0);
 	sprite_to_bg_img_rotl(game, game->sprite->empty, 0, y);

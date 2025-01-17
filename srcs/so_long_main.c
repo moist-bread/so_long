@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 16:15:33 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/17 09:00:23 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/17 11:58:58 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	game_start(t_map *map)
 
 	set_game(&game, map);
 	put_border(game, map);
+	if (game->map->heigth > 10 || game->map->width > 19)
+		put_in_border(game);
 	put_corner(game);
 	put_map(game, map);
 	// mlx_put_image_to_window(game->mlx, game->win, game->bg->img, 0, 0);
