@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 14:15:02 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/15 12:10:53 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/17 14:49:37 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	set_sprites_bg_big(t_game *game, int gap)
 			&game->spr_size);
 	game->sprite->bord_h->img = mlx_xpm_file_to_image(game->mlx, BORDH,
 			&game->spr_size, &gap);
-	game->sprite->bord_c->img = mlx_xpm_file_to_image(game->mlx, BORDC, &gap,
-			&gap);
+	game->sprite->bord_c->img = mlx_xpm_file_to_image(game->mlx, BORDC,
+			&game->spr_size, &game->spr_size);
 	game->spr_size = 90;
 }
 

@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 08:42:08 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/17 08:48:05 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/17 14:59:45 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	sprite_to_bg_img(t_game *game, t_data *sprite, int x, int y)
 		while (++wid < game->spr_size)
 		{
 			color = get_pixel(sprite, wid, hei);
-			put_pixel(game->bg, x + wid, y + hei, color);
+			if (color != TRANSPARENT)
+				put_pixel(game->bg, x + wid, y + hei, color);
 		}
 	}
 }
