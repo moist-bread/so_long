@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 22:06:56 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/16 12:02:44 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/17 17:00:43 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ int	set_game(t_game **game, t_map *map)
 {
 	*game = malloc(sizeof(t_game));
 	if (!(*game))
-		return (1); // -make it game destroyer
+		game_destroyer (*game, map);
 	(*game)->collected = 0;
 	(*game)->map = map;
 	(*game)->mlx = mlx_init();
 	if (!(*game)->mlx)
-		return (1); // -make it game destroyer
+		game_destroyer (*game, map);
 	if (map->heigth < 10 && map->width < 19)
 	{
 		(*game)->win = mlx_new_window((*game)->mlx, (map->width + 2) * 90,
@@ -34,7 +34,7 @@ int	set_game(t_game **game, t_map *map)
 		(*game)->offset = 15;
 	}
 	if (!(*game)->win)
-		return (1); // -make it game destroyer
+		game_destroyer (*game, map);
 	set_assets(*game, map);
 	set_imgs(*game, map);
 	ft_printf("PRELIMINAR SETTINGS ARE DONE\n\n");
@@ -45,7 +45,7 @@ void	set_assets(t_game *game, t_map *map)
 {
 	game->sprite = malloc(sizeof(t_sprt));
 	if (!game->sprite)
-		exit(1); // -make it free
+		game_destroyer (game, map);
 	make_sprite_data(game, map);
 	if (map->heigth <= 10 && map->width <= 19)
 	{
@@ -64,11 +64,10 @@ void	set_assets(t_game *game, t_map *map)
 		|| !game->sprite->chara->img || !game->sprite->bord->img
 		|| !game->sprite->bord_v->img || !game->sprite->bord_h->img
 		|| !game->sprite->bord_c->img)
-		img_destroyer(game, map); // -make it game_destroyer
+		game_destroyer(game, map);
 	get_sprite_data_bg(game);
 	// get_sprite_data_fg(game);
 	ft_printf("get sprite data(success)\n");
-	// check for failure
 }
 
 void	set_imgs(t_game *game, t_map *map)
@@ -76,6 +75,8 @@ void	set_imgs(t_game *game, t_map *map)
 	ft_printf("mallocing back and fore ground data\n");
 	game->bg = malloc(sizeof(t_data));
 	game->fg = malloc(sizeof(t_data));
+	if (!game->bg || !game->fg)
+		game_destroyer(game, map);
 	if (map->heigth < 10 && map->width < 19)
 	{
 		game->bg->img = mlx_new_image(game->mlx, (map->width + 2) * 90,
@@ -88,6 +89,8 @@ void	set_imgs(t_game *game, t_map *map)
 		game->bg->img = mlx_new_image(game->mlx, 1920, 1080);
 		game->fg->img = mlx_new_image(game->mlx, 1920, 1080);
 	}
+	if (!game->bg->img || !game->fg->img)
+		game_destroyer(game, map);
 	ft_printf("malloc ground data (success)\n");
 	ft_printf("getting back and fore ground data\n");
 	game->bg->addr = mlx_get_data_addr(game->bg->img, &game->bg->bpp,

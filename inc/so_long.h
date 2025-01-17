@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 10:31:49 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/17 12:03:38 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/17 15:32:10 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,8 @@ typedef struct s_game
 }			t_game;
 
 // TBD
-void	put_in_border(t_game *game);
-void	gap_to_bg_img_h(t_game *game, t_data *sprite, int x, int y);
+void		put_in_border(t_game *game);
+void		gap_to_bg_img_h(t_game *game, t_data *sprite, int x, int y);
 
 // MAIN
 void		game_start(t_map *map);
@@ -156,8 +156,8 @@ void	get_sprite_data_fg(t_game *game); // to be made
 
 // DESTROYERS
 // - destroy check
-void		img_destroyer(t_game *game, t_map *map);
-// -game destroyer
+void		img_destroyer(t_game *game);
+void		game_destroyer(t_game *game, t_map *map);
 // -game free exit
 
 // MAKE BG

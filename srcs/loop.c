@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 08:57:12 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/17 08:58:20 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/17 17:37:36 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,9 @@ int	player_move(int key, t_game *game)
 	if (key == 65307)
 	{
 		ft_printf("shut down\n");
-		mlx_destroy_window(game->mlx, game->win);
-		exit(0);
+		// mlx_destroy_window(game->mlx, game->win);
+		// exit (0);
+		game_destroyer(game, game->map);
 	}
 	else if (key == 'w' || key == 65362)
 	{
