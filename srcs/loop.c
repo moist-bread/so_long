@@ -6,14 +6,15 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 08:57:12 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/23 15:55:09 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/23 17:46:09 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-int	put_player(t_game *game) // change name to something else pls
+int	put_player(t_game *game)
 {
+	// change name to something else pls
 	mlx_clear_window(game->mlx, game->win);
 	if (game->map->map[game->map->ps_cord.y][game->map->ps_cord.x] == 'c')
 	{

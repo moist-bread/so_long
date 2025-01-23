@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 10:31:49 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/23 16:14:30 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/23 19:57:31 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,10 +111,15 @@ typedef struct s_game
 }			t_game;
 
 // TBD
-void		put_in_border(t_game *game);
+void		put_bevel(t_game *game);
 void		gap_to_bg_img_h(t_game *game, t_data *sprite, int x, int y);
 void		sprite_destroyer(t_game *game);
 void		game_destroyer_3000(t_game *game, t_map *map, int status);
+void		sprite_to_bg_img_mirr(t_game *game, t_data *sprite, int x, int y);
+void		gap_to_bg_img_hflip(t_game *game, t_data *sprite, int x, int y);
+void		gap_to_bg_img_h_vflip(t_game *game, t_data *sprite, int x, int y);
+void		corn_to_bg_img(t_game *game, t_data *sprite, int x, int y);
+void		square_to_bg(t_game *game, int color, int x, int y);
 
 // MAIN
 void		game_start(t_map *map);
@@ -141,7 +146,7 @@ void		is_e_or_ps(int y, int x, t_map *map, int type);
 int			map_flood_fill(int y, int x, t_map *map);
 
 // SET GAME
-int			set_game(t_game *game, t_map *map);
+int			set_game(t_game **game, t_map *map);
 void		set_assets(t_game *game);
 void		set_imgs(t_game *game);
 

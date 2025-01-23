@@ -6,37 +6,37 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 22:06:56 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/23 16:15:01 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/23 17:00:51 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-int	set_game(t_game *game, t_map *map)
+int	set_game(t_game **game, t_map *map)
 {
-	game = malloc(sizeof(t_game));
-	if (!game)
-		game_destroyer_3000(game, map, 1);
-	game->collected = 0;
-	game->map = map;
-	game->mlx = mlx_init();
-	if (!game->mlx)
-		game_destroyer_3000(game, map, 2);
+	*game = malloc(sizeof(t_game));
+	if (!(*game))
+		game_destroyer_3000(*game, map, 1);
+	(*game)->collected = 0;
+	(*game)->map = map;
+	(*game)->mlx = mlx_init();
+	if (!(*game)->mlx)
+		game_destroyer_3000(*game, map, 2);
 	if (map->heigth < 10 && map->width < 19)
 	{
-		game->win = mlx_new_window(game->mlx, (map->width + 2) * 90,
+		(*game)->win = mlx_new_window((*game)->mlx, (map->width + 2) * 90,
 				(map->heigth + 2) * 90, "window dinamic");
-		game->offset = 0;
+		(*game)->offset = 0;
 	}
 	else
 	{
-		game->win = mlx_new_window(game->mlx, 1920, 1080, "window big");
-		game->offset = 15;
+		(*game)->win = mlx_new_window((*game)->mlx, 1920, 1080, "window big");
+		(*game)->offset = 15;
 	}
-	if (!game->win)
-		game_destroyer_3000(game, map, 3);
-	set_assets(game);
-	set_imgs(game);
+	if (!(*game)->win)
+		game_destroyer_3000(*game, map, 3);
+	set_assets(*game);
+	set_imgs(*game);
 	ft_printf("PRELIMINAR SETTINGS ARE DONE\n\n");
 	return (0);
 }

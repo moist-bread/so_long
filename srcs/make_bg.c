@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 15:31:05 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/17 14:53:01 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/23 20:07:31 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,27 +26,20 @@ void	put_border(t_game *game, t_map *map)
 			&& ((game->spr_size == 90 && ++x < 21) || (game->spr_size == 45
 					&& ++x < 42))))
 	{
-		sprite_to_bg_img_rotl(game, game->sprite->bord, (x * game->spr_size)
-			+ game->offset, 0);
-		sprite_to_bg_img_rotr(game, game->sprite->bord, (x * game->spr_size)
-			+ game->offset, (y - 1) * game->spr_size);
+		sprite_to_bg_img_rotl(game, game->sprite->bord, (x * game->spr_size),
+			0);
+		sprite_to_bg_img_rotr(game, game->sprite->bord, (x * game->spr_size), (y
+				- 1) * game->spr_size);
 	}
 	while (--y >= 0)
 	{
-		sprite_to_bg_img(game, game->sprite->bord, game->offset, y
-			* game->spr_size);
+		sprite_to_bg_img(game, game->sprite->bord, 0, y * game->spr_size);
 		sprite_to_bg_img_hflip(game, game->sprite->bord, ((x - 1)
-				* game->spr_size) + game->offset, y * game->spr_size);
-		if (game->offset)
-		{
-			gap_to_bg_img(game, game->sprite->bord_v, 0, y * game->spr_size);
-			gap_to_bg_img(game, game->sprite->bord_v, (x * game->spr_size)
-				+ game->offset, y * game->spr_size);
-		}
+				* game->spr_size) + (2 * game->offset), y * game->spr_size);
 	}
 }
 
-void	put_in_border(t_game *game)
+void	put_bevel(t_game *game)
 {
 	int	y;
 	int	x;
@@ -55,39 +48,18 @@ void	put_in_border(t_game *game)
 	x = -1;
 	while (++y < game->map->heigth)
 	{
-		gap_to_bg_img(game, game->sprite->bord_v, 1 * game->spr_size, (y + 1)
-			* game->spr_size);
-		// gap_to_bg_img(game, game->sprite->bord_h,
-		// game->map->width * game->spr_size, (y + 1)
-		// * game->spr_size);
+		gap_to_bg_img(game, game->sprite->bord_v, game->spr_size - 15
+			+ game->offset, (y + 1) * game->spr_size);
+		gap_to_bg_img_hflip(game, game->sprite->bord_v, (game->map->width + 1)
+			* game->spr_size + game->offset, (y + 1) * game->spr_size);
 	}
 	while (++x < game->map->width)
 	{
-		gap_to_bg_img_h(game, game->sprite->bord_h, 500, 500);
+		gap_to_bg_img_h_vflip(game, game->sprite->bord_v, (x + 1)
+			* game->spr_size + game->offset, game->spr_size - 15);
+		gap_to_bg_img_h(game, game->sprite->bord_v, (x + 1) * game->spr_size
+			+ game->offset, (y + 1) * game->spr_size);
 	}
-	/* while ((!game->offset && ++x < game->map->width + 2) || (game->offset
-			&& ((game->spr_size == 90 && ++x < 21) || (game->spr_size == 45
-					&& ++x < 42))))
-	{
-		sprite_to_bg_img_rotl(game, game->sprite->bord, (x * game->spr_size)
-			+ game->offset, 0);
-		sprite_to_bg_img_rotr(game, game->sprite->bord, (x * game->spr_size)
-			+ game->offset, (y - 1) * game->spr_size);
-	}
-	while (--y >= 0)
-	{
-		sprite_to_bg_img(game, game->sprite->bord, game->offset, y
-			* game->spr_size);
-		sprite_to_bg_img_hflip(game, game->sprite->bord, ((x - 1)
-				* game->spr_size) + game->offset, y * game->spr_size);
-		if (game->offset)
-		{
-			gap_to_bg_img(game, game->sprite->bord_v, 0, y * game->spr_size);
-			gap_to_bg_img(game, game->sprite->bord_v, (x * game->spr_size)
-				+ game->offset, y * game->spr_size);
-		}
-	} */
-	(void)game;
 }
 
 void	put_corner(t_game *game)
@@ -108,7 +80,14 @@ void	put_corner(t_game *game)
 	sprite_to_bg_img(game, game->sprite->bord_c, 0, 0);
 	sprite_to_bg_img_vflip(game, game->sprite->bord_c, 0, y);
 	sprite_to_bg_img_hflip(game, game->sprite->bord_c, x, 0);
-	sprite_to_bg_img_rotl(game, game->sprite->bord_c, x, y);
+	sprite_to_bg_img_mirr(game, game->sprite->bord_c, x, y);
+	corn_to_bg_img(game, game->sprite->wall_v, game->spr_size - 15
+		+ game->offset, game->spr_size - 15);
+	corn_to_bg_img(game, game->sprite->wall_v, game->spr_size - 15
+		+ game->offset, y);
+	corn_to_bg_img(game, game->sprite->wall_v, x - game->offset, game->spr_size
+		- 15);
+	corn_to_bg_img(game, game->sprite->wall_v, x - game->offset, y);
 }
 
 void	put_map(t_game *game, t_map *map)
@@ -130,7 +109,11 @@ void	put_map(t_game *game, t_map *map)
 
 void	put_sprite(t_game *game, int y, int x, int type)
 {
-	if (type == 'O' || type == 'c' || type == 'E' || type == 'P')
+	if ((y == 0 || x == 0 || y == game->map->heigth - 1 || x == game->map->width
+			- 1) && type == '1')
+		square_to_bg(game, 0xFF0F0F0F, ((x + 1) * game->spr_size)
+			+ game->offset, (y + 1) * game->spr_size);
+	else if (type == 'O' || type == 'c' || type == 'E' || type == 'P')
 		sprite_to_bg_img(game, game->sprite->empty, ((x + 1) * game->spr_size)
 			+ game->offset, (y + 1) * game->spr_size);
 	else if (type == '1')
@@ -159,7 +142,4 @@ void	put_fg(t_game *game, int y, int x, int type)
 	if (type == 'E')
 		sprite_to_bg_img(game, game->sprite->exit_c, ((x + 1) * game->spr_size)
 			+ game->offset, (y + 1) * game->spr_size);
-	/* if (type == 'P')
-		sprite_to_bg_img(game, game->sprite->chara, ((x + 1) * game->spr_size)
-			+ game->offset, (y + 1) * game->spr_size); */
 }
