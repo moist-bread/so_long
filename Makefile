@@ -6,7 +6,7 @@
 #    By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 12:30:07 by rduro-pe          #+#    #+#              #
-#    Updated: 2025/01/17 09:11:39 by rduro-pe         ###   ########.fr        #
+#    Updated: 2025/01/23 16:16:42 by rduro-pe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ MLX = ./inc/minilibx_linux/libmlx.a
 
 
 # ★☆★-‵,┊( TO DO )┊.´-★☆★
-#	windows
+#	sprites
 
 
 # ★☆★-‵,┊( SOURCES AND OBJS )┊.´-★☆★

@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 10:31:49 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/17 15:32:10 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/23 16:14:30 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,8 @@ typedef struct s_game
 // TBD
 void		put_in_border(t_game *game);
 void		gap_to_bg_img_h(t_game *game, t_data *sprite, int x, int y);
+void		sprite_destroyer(t_game *game);
+void		game_destroyer_3000(t_game *game, t_map *map, int status);
 
 // MAIN
 void		game_start(t_map *map);
@@ -139,9 +141,9 @@ void		is_e_or_ps(int y, int x, t_map *map, int type);
 int			map_flood_fill(int y, int x, t_map *map);
 
 // SET GAME
-int			set_game(t_game **game, t_map *map);
-void		set_assets(t_game *game, t_map *map);
-void		set_imgs(t_game *game, t_map *map);
+int			set_game(t_game *game, t_map *map);
+void		set_assets(t_game *game);
+void		set_imgs(t_game *game);
 
 // SET SPRITES
 void		set_sprites_bg_big(t_game *game, int gap);
@@ -150,7 +152,7 @@ void		set_sprites_bg_small(t_game *game, int gap);
 void	set_sprites_fg_small(t_game *game, int gap); // to be made
 
 // MAKE DATA
-void		make_sprite_data(t_game *game, t_map *map);
+void		make_sprite_data(t_game *game);
 void		get_sprite_data_bg(t_game *game);
 void	get_sprite_data_fg(t_game *game); // to be made
 

@@ -6,13 +6,13 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 14:12:21 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/17 15:42:03 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/23 16:12:08 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	make_sprite_data(t_game *game, t_map *map)
+void	make_sprite_data(t_game *game)
 {
 	ft_printf("mallocing sprite data\n");
 	game->sprite->empty = malloc(sizeof(t_data));
@@ -30,7 +30,7 @@ void	make_sprite_data(t_game *game, t_map *map)
 		|| !game->sprite->colt || !game->sprite->exit_c || !game->sprite->exit_o
 		|| !game->sprite->chara || !game->sprite->bord || !game->sprite->bord_v
 		|| !game->sprite->bord_h || !game->sprite->bord_c)
-		game_destroyer(game, map); // -make it game_destroyer
+		game_destroyer_3000(game, game->map, 5);
 }
 
 void	get_sprite_data_bg(t_game *game)
