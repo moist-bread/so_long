@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 15:31:05 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/24 13:45:28 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/24 14:04:29 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,4 +155,23 @@ void	fill_gap(t_game *game)
 		while (++x <= game->map->width)
 			put_sprite(game, y, x, 'F');
 	}
+}
+
+void	add_decor(t_game *game)
+{
+	if (game->map->heigth <= 10 && game->map->width <= 19)
+		return ;
+	if (game->map->width <= 36)
+	{
+		square_to_bg(game, 0xFF0F0F0F, (38 * game->spr_size) + game->offset, 1
+			* game->spr_size);
+		square_to_bg(game, 0xFF0F0F0F, (38 * game->spr_size) + game->offset, 18
+			* game->spr_size);
+	}
+	if (game->map->heigth <= 15)
+	{
+		square_to_bg(game, 0xFF0F0F0F, game->spr_size + game->offset, 18
+			* game->spr_size);
+	}
+	// 15 x 36
 }

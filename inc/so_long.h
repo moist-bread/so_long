@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 10:31:49 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/24 13:40:51 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/24 13:50:25 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ void		corn_to_bg_img(t_game *game, t_data *sprite, int x, int y);
 void		square_to_bg(t_game *game, int color, int x, int y);
 void		fill_gap(t_game *game);
 void		rectangle_to_bg(t_game *game, int color, int x, int y);
+void		add_decor(t_game *game);
 
 // MAIN
 void		game_start(t_map *map);
