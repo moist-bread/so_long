@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 09:02:09 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/23 19:57:24 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/24 13:40:45 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,20 @@ void	square_to_bg(t_game *game, int color, int x, int y)
 	{
 		wid = -1;
 		while (++wid < game->spr_size)
+			put_pixel(game->bg, x + wid, y + hei, color);
+	}
+}
+
+void	rectangle_to_bg(t_game *game, int color, int x, int y)
+{
+	int	wid;
+	int	hei;
+
+	hei = -1;
+	while (++hei < game->spr_size)
+	{
+		wid = -1;
+		while (++wid < 15)
 			put_pixel(game->bg, x + wid, y + hei, color);
 	}
 }

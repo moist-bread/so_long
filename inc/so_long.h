@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 10:31:49 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/23 19:57:31 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/24 13:40:51 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@
 # define SBORDH "./assets/small/border_h.xpm"
 # define SBORDC "./assets/small/border_c.xpm"
 
-# define TRANSPARENT 0xFF000000 // MAKE IT CHROMA KEY
+# define TRANSPARENT 0xFF000000
 
 // STRUCTS
 typedef struct s_cord
@@ -120,6 +120,8 @@ void		gap_to_bg_img_hflip(t_game *game, t_data *sprite, int x, int y);
 void		gap_to_bg_img_h_vflip(t_game *game, t_data *sprite, int x, int y);
 void		corn_to_bg_img(t_game *game, t_data *sprite, int x, int y);
 void		square_to_bg(t_game *game, int color, int x, int y);
+void		fill_gap(t_game *game);
+void		rectangle_to_bg(t_game *game, int color, int x, int y);
 
 // MAIN
 void		game_start(t_map *map);
@@ -169,7 +171,7 @@ void		game_destroyer(t_game *game, t_map *map);
 
 // MAKE BG
 void		put_border(t_game *game, t_map *map);
-void		put_corner(t_game *game);
+void		put_corner(t_game *game, int size);
 void		put_map(t_game *game, t_map *map);
 void		put_sprite(t_game *game, int y, int x, int type);
 void		put_fg(t_game *game, int y, int x, int type);
