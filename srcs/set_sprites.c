@@ -6,76 +6,106 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 14:15:02 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/24 12:42:42 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/26 16:10:37 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	set_sprites_bg_big(t_game *game, int gap)
+void	set_sprites_big(t_game *game, int gap)
 {
 	ft_printf("setting big sprites (small map)\n");
-	game->sprite->empty->img = mlx_xpm_file_to_image(game->mlx, EMPTY,
+	game->sprite->bord->img = mlx_xpm_file_to_image(game->mlx, BORD,
 			&game->spr_size, &game->spr_size);
-	game->sprite->wall_v->img = mlx_xpm_file_to_image(game->mlx, WALLV, &gap,
+	game->sprite->bord_c->img = mlx_xpm_file_to_image(game->mlx, BORDC,
+			&game->spr_size, &game->spr_size);
+	game->sprite->bevel->img = mlx_xpm_file_to_image(game->mlx, BVL, &gap,
+			&game->spr_size);
+	game->sprite->bevel_c->img = mlx_xpm_file_to_image(game->mlx, BVLC, &gap,
 			&gap);
-	game->sprite->wall_h->img = mlx_xpm_file_to_image(game->mlx, WALLH,
+	game->sprite->speaker->img = mlx_xpm_file_to_image(game->mlx, SPKR, &gap,
+			&gap);
+	game->sprite->logo->img = mlx_xpm_file_to_image(game->mlx, LOGO, &gap,
+			&gap);
+	game->sprite->button->img = mlx_xpm_file_to_image(game->mlx, BTN, &gap,
+			&gap);
+	game->sprite->arrow->img = mlx_xpm_file_to_image(game->mlx, ARRW, &gap,
+			&gap);
+	game->spr_size = 90;
+	set_sprites_fg_big(game);
+}
+
+void	set_sprites_fg_big(t_game *game)
+{
+	ft_printf("setting big fg sprites (small map)\n");
+	game->sprite->empty_1->img = mlx_xpm_file_to_image(game->mlx, EMPTY1,
 			&game->spr_size, &game->spr_size);
-	game->sprite->colt->img = mlx_xpm_file_to_image(game->mlx, COLT,
+	game->sprite->empty_2->img = mlx_xpm_file_to_image(game->mlx, EMPTY2,
+			&game->spr_size, &game->spr_size);
+	game->sprite->wall->img = mlx_xpm_file_to_image(game->mlx, WALL,
+			&game->spr_size, &game->spr_size);
+	game->sprite->wall_m->img = mlx_xpm_file_to_image(game->mlx, WALLM,
+			&game->spr_size, &game->spr_size);
+	game->sprite->wall_c->img = mlx_xpm_file_to_image(game->mlx, WALLC,
 			&game->spr_size, &game->spr_size);
 	game->sprite->exit_c->img = mlx_xpm_file_to_image(game->mlx, EXITC,
 			&game->spr_size, &game->spr_size);
 	game->sprite->exit_o->img = mlx_xpm_file_to_image(game->mlx, EXITO,
 			&game->spr_size, &game->spr_size);
-	game->sprite->chara->img = mlx_xpm_file_to_image(game->mlx, CHARA,
+	game->sprite->colt->img = mlx_xpm_file_to_image(game->mlx, COLT,
 			&game->spr_size, &game->spr_size);
-	game->sprite->bord->img = mlx_xpm_file_to_image(game->mlx, BORD,
+	game->sprite->chara_1->img = mlx_xpm_file_to_image(game->mlx, CHARA1,
 			&game->spr_size, &game->spr_size);
-	game->sprite->bord_v->img = mlx_xpm_file_to_image(game->mlx, BORDV, &gap,
-			&game->spr_size);
-	game->sprite->bord_h->img = mlx_xpm_file_to_image(game->mlx, BORDH,
-			&game->spr_size, &gap);
-	game->sprite->bord_c->img = mlx_xpm_file_to_image(game->mlx, BORDC,
+	game->sprite->chara_2->img = mlx_xpm_file_to_image(game->mlx, CHARA2,
 			&game->spr_size, &game->spr_size);
 	game->spr_size = 90;
 }
 
-void	set_sprites_bg_small(t_game *game, int gap)
+void	set_sprites_small(t_game *game, int gap)
 {
-	ft_printf("setting small sprites (big map)\n");
-	game->sprite->empty->img = mlx_xpm_file_to_image(game->mlx, SEMPTY,
+	ft_printf("setting small bg sprites (big map)\n");
+	game->sprite->bord->img = mlx_xpm_file_to_image(game->mlx, SBORD,
 			&game->spr_size, &game->spr_size);
-	game->sprite->wall_v->img = mlx_xpm_file_to_image(game->mlx, SWALLV,
+	game->sprite->bord_c->img = mlx_xpm_file_to_image(game->mlx, SBORDC,
 			&game->spr_size, &game->spr_size);
-	game->sprite->wall_h->img = mlx_xpm_file_to_image(game->mlx, SWALLH,
+	game->sprite->bevel->img = mlx_xpm_file_to_image(game->mlx, SBVL, &gap,
+			&game->spr_size);
+	game->sprite->bevel_c->img = mlx_xpm_file_to_image(game->mlx, SBVLC, &gap,
+			&gap);
+	game->sprite->speaker->img = mlx_xpm_file_to_image(game->mlx, SSPKR, &gap,
+			&gap);
+	game->sprite->logo->img = mlx_xpm_file_to_image(game->mlx, SLOGO, &gap,
+			&gap);
+	game->sprite->button->img = mlx_xpm_file_to_image(game->mlx, SBTN, &gap,
+			&gap);
+	game->sprite->arrow->img = mlx_xpm_file_to_image(game->mlx, SARRW, &gap,
+			&gap);
+	game->spr_size = 45;
+	set_sprites_fg_small(game);
+}
+
+void	set_sprites_fg_small(t_game *game)
+{
+	ft_printf("setting small fg sprites (big map)\n");
+	game->sprite->empty_1->img = mlx_xpm_file_to_image(game->mlx, SEMPTY1,
 			&game->spr_size, &game->spr_size);
-	game->sprite->colt->img = mlx_xpm_file_to_image(game->mlx, SCOLT,
+	game->sprite->empty_2->img = mlx_xpm_file_to_image(game->mlx, SEMPTY2,
+			&game->spr_size, &game->spr_size);
+	game->sprite->wall->img = mlx_xpm_file_to_image(game->mlx, SWALL,
+			&game->spr_size, &game->spr_size);
+	game->sprite->wall_m->img = mlx_xpm_file_to_image(game->mlx, SWALLM,
+			&game->spr_size, &game->spr_size);
+	game->sprite->wall_c->img = mlx_xpm_file_to_image(game->mlx, SWALLC,
 			&game->spr_size, &game->spr_size);
 	game->sprite->exit_c->img = mlx_xpm_file_to_image(game->mlx, SEXITC,
 			&game->spr_size, &game->spr_size);
 	game->sprite->exit_o->img = mlx_xpm_file_to_image(game->mlx, SEXITO,
 			&game->spr_size, &game->spr_size);
-	game->sprite->chara->img = mlx_xpm_file_to_image(game->mlx, SCHARA,
+	game->sprite->colt->img = mlx_xpm_file_to_image(game->mlx, SCOLT,
 			&game->spr_size, &game->spr_size);
-	game->sprite->bord->img = mlx_xpm_file_to_image(game->mlx, SBORD,
+	game->sprite->chara_1->img = mlx_xpm_file_to_image(game->mlx, SCHARA1,
 			&game->spr_size, &game->spr_size);
-	game->sprite->bord_v->img = mlx_xpm_file_to_image(game->mlx, SBORDV, &gap,
-			&game->spr_size);
-	game->sprite->bord_h->img = mlx_xpm_file_to_image(game->mlx, SBORDH,
-			&game->spr_size, &gap);
-	game->sprite->bord_c->img = mlx_xpm_file_to_image(game->mlx, SBORDC, &gap,
-			&gap);
+	game->sprite->chara_2->img = mlx_xpm_file_to_image(game->mlx, SCHARA2,
+			&game->spr_size, &game->spr_size);
 	game->spr_size = 45;
-}
-
-void	set_sprites_fg_big(t_game *game, int gap)
-{
-	(void)game;
-	(void)gap;
-}
-
-void	set_sprites_fg_small(t_game *game, int gap)
-{
-	(void)game;
-	(void)gap;
 }

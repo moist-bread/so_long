@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 22:06:56 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/23 17:00:51 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/26 16:31:43 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,25 +48,14 @@ void	set_assets(t_game *game)
 		game_destroyer_3000(game, game->map, 4);
 	make_sprite_data(game);
 	if (game->map->heigth <= 10 && game->map->width <= 19)
-	{
-		set_sprites_bg_big(game, 15);
-		// set_sprites_fg_big(game, 15);
-	}
+		set_sprites_big(game, 15);
 	else
-	{
-		set_sprites_bg_small(game, 15);
-		// set_sprites_fg_small(game, 15);
-	}
+		set_sprites_small(game, 15);
 	ft_printf("set sprites %d (success)\n", game->spr_size);
-	if (!game->sprite->empty->img || !game->sprite->wall_v->img
-		|| !game->sprite->wall_h->img || !game->sprite->colt->img
-		|| !game->sprite->exit_c->img || !game->sprite->exit_o->img
-		|| !game->sprite->chara->img || !game->sprite->bord->img
-		|| !game->sprite->bord_v->img || !game->sprite->bord_h->img
-		|| !game->sprite->bord_c->img)
-		game_destroyer_3000(game, game->map, 6);
+	data_making_checker(game, 2);
 	get_sprite_data_bg(game);
-	// get_sprite_data_fg(game);
+	get_sprite_data_fg(game);
+	get_sprite_data_extra(game);
 	ft_printf("get sprite data(success)\n");
 }
 
@@ -94,7 +83,7 @@ void	set_imgs(t_game *game)
 	if (!game->bg->img || !game->fg->img)
 		game_destroyer_3000(game, game->map, 8);
 	ft_printf("malloc ground data (success)\n");
-	ft_printf("getting back and fore ground data\n");
+	ft_printf("getting bg and fg data\n");
 	game->bg->addr = mlx_get_data_addr(game->bg->img, &game->bg->bpp,
 			&game->bg->len, &game->bg->endian);
 	game->fg->addr = mlx_get_data_addr(game->fg->img, &game->fg->bpp,

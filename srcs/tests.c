@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 12:23:43 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/15 13:58:54 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/26 16:08:16 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	game_stort_test2(t_map *map)
 	// putting the xpm file in the img2
 	game->spr_size = 90;
 	game->bg = malloc(sizeof(t_data *));
-	game->bg->img = mlx_xpm_file_to_image(game->mlx, EMPTY, &game->spr_size,
+	game->bg->img = mlx_xpm_file_to_image(game->mlx, EMPTY1, &game->spr_size,
 			&game->spr_size);
 	game->bg->len = 2;
 	ft_printf("%p", game->bg->img);
@@ -57,7 +57,7 @@ void	game_stort_test(t_map *map)
 	int		img_width;
 	int		img_height;
 
-	relative_path = EMPTY;
+	relative_path = EMPTY1;
 	// initialize
 	if (!(mlx = mlx_init()))
 		exit(1); // -make it free

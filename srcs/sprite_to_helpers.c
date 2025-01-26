@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 09:02:09 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/24 13:40:45 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/26 16:44:03 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	put_pixel(t_data *img, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	sprite_to_fg_img(t_game *game, t_data *sprite, int x, int y)
+void	sprite_to_fg(t_game *game, t_data *sprite, int x, int y)
 {
 	unsigned int	color;
 	int				wid;
@@ -47,7 +47,7 @@ void	sprite_to_fg_img(t_game *game, t_data *sprite, int x, int y)
 	}
 }
 
-void	gap_to_bg_img(t_game *game, t_data *sprite, int x, int y)
+void	gap_to_bg(t_game *game, t_data *sprite, int x, int y)
 {
 	unsigned int	color;
 	int				wid;
@@ -65,7 +65,7 @@ void	gap_to_bg_img(t_game *game, t_data *sprite, int x, int y)
 	}
 }
 
-void	corn_to_bg_img(t_game *game, t_data *sprite, int x, int y)
+void	corn_to_bg(t_game *game, t_data *sprite, int x, int y)
 {
 	unsigned int	color;
 	int				wid;
@@ -83,7 +83,7 @@ void	corn_to_bg_img(t_game *game, t_data *sprite, int x, int y)
 	}
 }
 
-void	gap_to_bg_img_hflip(t_game *game, t_data *sprite, int x, int y)
+void	gap_to_bg_hflip(t_game *game, t_data *sprite, int x, int y)
 {
 	unsigned int	color;
 	int				wid;
@@ -101,7 +101,7 @@ void	gap_to_bg_img_hflip(t_game *game, t_data *sprite, int x, int y)
 	}
 }
 
-void	gap_to_bg_img_h(t_game *game, t_data *sprite, int x, int y)
+void	gap_to_bg_h(t_game *game, t_data *sprite, int x, int y)
 {
 	unsigned int	color;
 	int				wid;
@@ -119,7 +119,7 @@ void	gap_to_bg_img_h(t_game *game, t_data *sprite, int x, int y)
 	}
 }
 
-void	gap_to_bg_img_h_vflip(t_game *game, t_data *sprite, int x, int y)
+void	gap_to_bg_h_vflip(t_game *game, t_data *sprite, int x, int y)
 {
 	unsigned int	color;
 	int				wid;

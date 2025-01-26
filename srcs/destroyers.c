@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:55:59 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/23 15:56:12 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/26 16:31:08 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,10 @@ void	game_destroyer_3000(t_game *game, t_map *map, int status)
 	if (status >= 4)
 		mlx_destroy_window(game->mlx, game->win);
 	if (status >= 3)
+	{
 		mlx_destroy_display(game->mlx);
+		free(game->mlx);
+	}
 	if (status >= 2)
 		free(game);
 	if (status >= 1)
@@ -54,54 +57,92 @@ void	game_destroyer_3000(t_game *game, t_map *map, int status)
 void	img_destroyer(t_game *game)
 {
 	ft_printf("img destroyer 3000\n");
-	if (game->sprite->empty->img)
-		mlx_destroy_image(game->mlx, game->sprite->empty->img);
-	if (game->sprite->wall_v->img)
-		mlx_destroy_image(game->mlx, game->sprite->wall_v->img);
-	if (game->sprite->wall_h->img)
-		mlx_destroy_image(game->mlx, game->sprite->wall_h->img);
-	if (game->sprite->colt->img)
-		mlx_destroy_image(game->mlx, game->sprite->colt->img);
+	if (game->sprite->bord->img)
+		mlx_destroy_image(game->mlx, game->sprite->bord->img);
+	if (game->sprite->bord_c->img)
+		mlx_destroy_image(game->mlx, game->sprite->bord_c->img);
+	if (game->sprite->bevel->img)
+		mlx_destroy_image(game->mlx, game->sprite->bevel->img);
+	if (game->sprite->bevel_c->img)
+		mlx_destroy_image(game->mlx, game->sprite->bevel_c->img);
+	if (game->sprite->speaker->img)
+		mlx_destroy_image(game->mlx, game->sprite->speaker->img);
+	if (game->sprite->logo->img)
+		mlx_destroy_image(game->mlx, game->sprite->logo->img);
+	if (game->sprite->button->img)
+		mlx_destroy_image(game->mlx, game->sprite->button->img);
+	if (game->sprite->arrow->img)
+		mlx_destroy_image(game->mlx, game->sprite->arrow->img);
+	img_fg_destroyer(game);
+}
+
+void	img_fg_destroyer(t_game *game)
+{
+	if (game->sprite->empty_1->img)
+		mlx_destroy_image(game->mlx, game->sprite->empty_1->img);
+	if (game->sprite->empty_2->img)
+		mlx_destroy_image(game->mlx, game->sprite->empty_2->img);
+	if (game->sprite->wall->img)
+		mlx_destroy_image(game->mlx, game->sprite->wall->img);
+	if (game->sprite->wall_m->img)
+		mlx_destroy_image(game->mlx, game->sprite->wall_m->img);
+	if (game->sprite->wall_c->img)
+		mlx_destroy_image(game->mlx, game->sprite->wall_c->img);
 	if (game->sprite->exit_c->img)
 		mlx_destroy_image(game->mlx, game->sprite->exit_c->img);
 	if (game->sprite->exit_o->img)
 		mlx_destroy_image(game->mlx, game->sprite->exit_o->img);
-	if (game->sprite->chara->img)
-		mlx_destroy_image(game->mlx, game->sprite->chara->img);
-	if (game->sprite->bord->img)
-		mlx_destroy_image(game->mlx, game->sprite->bord->img);
-	if (game->sprite->bord_v->img)
-		mlx_destroy_image(game->mlx, game->sprite->bord_v->img);
-	if (game->sprite->bord_h->img)
-		mlx_destroy_image(game->mlx, game->sprite->bord_h->img);
-	if (game->sprite->bord_c->img)
-		mlx_destroy_image(game->mlx, game->sprite->bord_c->img);
+	if (game->sprite->colt->img)
+		mlx_destroy_image(game->mlx, game->sprite->colt->img);
+	if (game->sprite->chara_1->img)
+		mlx_destroy_image(game->mlx, game->sprite->chara_1->img);
+	if (game->sprite->chara_2->img)
+		mlx_destroy_image(game->mlx, game->sprite->chara_2->img);
 }
 
 void	sprite_destroyer(t_game *game)
 {
 	ft_printf("sprite destroyer 3000\n");
-	if (game->sprite->empty)
-		free(game->sprite->empty);
-	if (game->sprite->wall_v)
-		free(game->sprite->wall_v);
-	if (game->sprite->wall_h)
-		free(game->sprite->wall_h);
-	if (game->sprite->colt)
-		free(game->sprite->colt);
+	if (game->sprite->bord)
+		free(game->sprite->bord);
+	if (game->sprite->bord_c)
+		free(game->sprite->bord_c);
+	if (game->sprite->bevel)
+		free(game->sprite->bevel);
+	if (game->sprite->bevel_c)
+		free(game->sprite->bevel_c);
+	if (game->sprite->speaker)
+		free(game->sprite->speaker);
+	if (game->sprite->logo)
+		free(game->sprite->logo);
+	if (game->sprite->button)
+		free(game->sprite->button);
+	if (game->sprite->arrow)
+		free(game->sprite->arrow);
+	sprite_fg_destroyer(game);
+}
+
+void	sprite_fg_destroyer(t_game *game)
+{
+	if (game->sprite->empty_1)
+		free(game->sprite->empty_1);
+	if (game->sprite->empty_2)
+		free(game->sprite->empty_2);
+	if (game->sprite->wall)
+		free(game->sprite->wall);
+	if (game->sprite->wall_m)
+		free(game->sprite->wall_m);
+	if (game->sprite->wall_c)
+		free(game->sprite->wall_c);
 	if (game->sprite->exit_c)
 		free(game->sprite->exit_c);
 	if (game->sprite->exit_o)
 		free(game->sprite->exit_o);
-	if (game->sprite->chara)
-		free(game->sprite->chara);
-	if (game->sprite->bord)
-		free(game->sprite->bord);
-	if (game->sprite->bord_v)
-		free(game->sprite->bord_v);
-	if (game->sprite->bord_h)
-		free(game->sprite->bord_h);
-	if (game->sprite->bord_c)
-		free(game->sprite->bord_c);
+	if (game->sprite->colt)
+		free(game->sprite->colt);
+	if (game->sprite->chara_1)
+		free(game->sprite->chara_1);
+	if (game->sprite->chara_2)
+		free(game->sprite->chara_2);
 	free(game->sprite);
 }

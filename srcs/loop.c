@@ -6,15 +6,14 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 08:57:12 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/23 17:46:09 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/26 16:34:41 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-int	put_player(t_game *game)
+int	render_game(t_game *game)
 {
-	// change name to something else pls
 	mlx_clear_window(game->mlx, game->win);
 	if (game->map->map[game->map->ps_cord.y][game->map->ps_cord.x] == 'c')
 	{
@@ -24,7 +23,7 @@ int	put_player(t_game *game)
 	}
 	if (game->collected == game->map->colt)
 	{
-		put_sprite(game, game->map->exit_cord.y, game->map->exit_cord.x, 'B');
+		put_sprite(game, game->map->exit_cord.y, game->map->exit_cord.x, 'e');
 		game->collected++;
 	}
 	if (game->collected > game->map->colt
@@ -34,11 +33,8 @@ int	put_player(t_game *game)
 		game_destroyer_3000(game, game->map, 10);
 	}
 	// mlx_put_image_to_window(game->mlx, game->win, game->fg->img, 0, 0);
-	// sprite_to_fg_img(game, game->sprite->bord, ((game->map->ps_cord.x + 1)
-	// 		* game->spr_size) + game->offset, (game->map->ps_cord.y + 1)
-	// 	* game->spr_size);
 	mlx_put_image_to_window(game->mlx, game->win, game->bg->img, 0, 0);
-	mlx_put_image_to_window(game->mlx, game->win, game->sprite->chara->img,
+	mlx_put_image_to_window(game->mlx, game->win, game->sprite->chara_1->img,
 		((game->map->ps_cord.x + 1) * game->spr_size) + game->offset,
 		(game->map->ps_cord.y + 1) * game->spr_size);
 	return (0);

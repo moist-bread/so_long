@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 10:31:49 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/24 13:50:25 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/26 17:48:54 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,39 +23,60 @@
 # include <unistd.h>
 
 // DEFINES
+
 // big asset paths
-# define EMPTY "./assets/big/empty.xpm"
-# define WALLV "./assets/big/wall_v.xpm"
-# define WALLH "./assets/big/wall_h.xpm"
-# define COLT "./assets/big/colt.xpm"
-# define EXITC "./assets/big/exit_c.xpm"
-# define EXITO "./assets/big/exit_o.xpm"
-# define CHARA "./assets/big/player.xpm"
-# define BORD "./assets/big/border.xpm"
-# define BORDV "./assets/big/border_v.xpm"
-# define BORDH "./assets/big/border_h.xpm"
-# define BORDC "./assets/big/border_c.xpm"
+// big bg
+# define BORD "./textures/big/border.xpm"
+# define BORDC "./textures/big/border_c.xpm"
+# define BVL "./textures/big/bevel.xpm"
+# define BVLC "./textures/big/bevel_c.xpm"
+# define SPKR "./textures/big/speaker.xpm"
+# define LOGO "./textures/big/logo.xpm"
+# define BTN "./textures/big/button.xpm"
+# define ARRW "./textures/big/arrow.xpm"
+
+// big fg
+# define EMPTY1 "./textures/big/empty_1.xpm"
+# define EMPTY2 "./textures/big/empty_2.xpm"
+# define WALL "./textures/big/wall.xpm"
+# define WALLM "./textures/big/wall_m.xpm"
+# define WALLC "./textures/big/wall_c.xpm"
+# define EXITC "./textures/big/exit_c.xpm"
+# define EXITO "./textures/big/exit_o.xpm"
+# define COLT "./textures/big/colt.xpm"
+# define CHARA1 "./textures/big/chara_1.xpm"
+# define CHARA2 "./textures/big/chara_2.xpm"
 
 // small asset paths
-# define SEMPTY "./assets/small/empty.xpm"
-# define SWALLV "./assets/small/wall_v.xpm"
-# define SWALLH "./assets/small/wall_h.xpm"
-# define SCOLT "./assets/small/colt.xpm"
-# define SEXITC "./assets/small/exit_c.xpm"
-# define SEXITO "./assets/small/exit_o.xpm"
-# define SCHARA "./assets/small/player.xpm"
-# define SBORD "./assets/small/border.xpm"
-# define SBORDV "./assets/small/border_v.xpm"
-# define SBORDH "./assets/small/border_h.xpm"
-# define SBORDC "./assets/small/border_c.xpm"
+// small bg
+# define SBORD "./textures/small/border.xpm"
+# define SBORDC "./textures/small/border_c.xpm"
+# define SBVL "./textures/small/bevel.xpm"
+# define SBVLC "./textures/small/bevel_c.xpm"
+# define SSPKR "./textures/small/speaker.xpm"
+# define SLOGO "./textures/small/logo.xpm"
+# define SBTN "./textures/small/button.xpm"
+# define SARRW "./textures/small/arrow.xpm"
+
+// small fg
+# define SEMPTY1 "./textures/small/empty_1.xpm"
+# define SEMPTY2 "./textures/small/empty_2.xpm"
+# define SWALL "./textures/small/wall.xpm"
+# define SWALLM "./textures/small/wall_m.xpm"
+# define SWALLC "./textures/small/wall_c.xpm"
+# define SEXITC "./textures/small/exit_c.xpm"
+# define SEXITO "./textures/small/exit_o.xpm"
+# define SCOLT "./textures/small/colt.xpm"
+# define SCHARA1 "./textures/small/chara_1.xpm"
+# define SCHARA2 "./textures/small/chara_2.xpm"
 
 # define TRANSPARENT 0xFF000000
 
 // STRUCTS
 typedef struct s_cord
 {
-	int		y;
 	int		x;
+	int		y;
 }			t_cord;
 
 typedef struct s_map
@@ -84,17 +105,24 @@ typedef struct s_data
 
 typedef struct s_sprt
 {
-	t_data	*empty;
-	t_data	*wall_v;
-	t_data	*wall_h;
-	t_data	*colt;
+	t_data	*bord;
+	t_data	*bord_c;
+	t_data	*bevel;
+	t_data	*bevel_c;
+	t_data	*speaker;
+	t_data	*logo;
+	t_data	*button;
+	t_data	*arrow;
+	t_data	*empty_1;
+	t_data	*empty_2;
+	t_data	*wall;
+	t_data	*wall_m;
+	t_data	*wall_c;
 	t_data	*exit_c;
 	t_data	*exit_o;
-	t_data	*chara;
-	t_data	*bord;
-	t_data	*bord_v;
-	t_data	*bord_h;
-	t_data	*bord_c;
+	t_data	*colt;
+	t_data	*chara_1;
+	t_data	*chara_2;
 }			t_sprt;
 
 typedef struct s_game
@@ -111,18 +139,8 @@ typedef struct s_game
 }			t_game;
 
 // TBD
-void		put_bevel(t_game *game);
-void		gap_to_bg_img_h(t_game *game, t_data *sprite, int x, int y);
-void		sprite_destroyer(t_game *game);
-void		game_destroyer_3000(t_game *game, t_map *map, int status);
-void		sprite_to_bg_img_mirr(t_game *game, t_data *sprite, int x, int y);
-void		gap_to_bg_img_hflip(t_game *game, t_data *sprite, int x, int y);
-void		gap_to_bg_img_h_vflip(t_game *game, t_data *sprite, int x, int y);
-void		corn_to_bg_img(t_game *game, t_data *sprite, int x, int y);
-void		square_to_bg(t_game *game, int color, int x, int y);
-void		fill_gap(t_game *game);
-void		rectangle_to_bg(t_game *game, int color, int x, int y);
-void		add_decor(t_game *game);
+void		new_sprite_to_bg(t_game *game, t_data *sprite, t_cord sprt,
+				t_cord win);
 
 // MAIN
 void		game_start(t_map *map);
@@ -154,44 +172,60 @@ void		set_assets(t_game *game);
 void		set_imgs(t_game *game);
 
 // SET SPRITES
-void		set_sprites_bg_big(t_game *game, int gap);
-void	set_sprites_fg_big(t_game *game, int gap); // to be made
-void		set_sprites_bg_small(t_game *game, int gap);
-void	set_sprites_fg_small(t_game *game, int gap); // to be made
+void		set_sprites_big(t_game *game, int gap);
+void		set_sprites_fg_big(t_game *game);
+void		set_sprites_small(t_game *game, int gap);
+void		set_sprites_fg_small(t_game *game);
 
 // MAKE DATA
 void		make_sprite_data(t_game *game);
+void		data_making_checker(t_game *game, int type);
 void		get_sprite_data_bg(t_game *game);
-void	get_sprite_data_fg(t_game *game); // to be made
+void		get_sprite_data_fg(t_game *game);
+void		get_sprite_data_extra(t_game *game);
 
 // DESTROYERS
-// - destroy check
+void		game_destroyer_3000(t_game *game, t_map *map, int status);
 void		img_destroyer(t_game *game);
-void		game_destroyer(t_game *game, t_map *map);
-// -game free exit
+void		img_fg_destroyer(t_game *game);
+void		sprite_destroyer(t_game *game);
+void		sprite_fg_destroyer(t_game *game);
+
+// MAKE FG
+void		put_map(t_game *game, t_map *map);
+void		put_sprite(t_game *game, int y, int x, int type);
 
 // MAKE BG
 void		put_border(t_game *game, t_map *map);
+void		put_bevel(t_game *game);
 void		put_corner(t_game *game, int size);
-void		put_map(t_game *game, t_map *map);
-void		put_sprite(t_game *game, int y, int x, int type);
-void		put_fg(t_game *game, int y, int x, int type);
+void		fill_gap(t_game *game);
+void		add_decor(t_game *game);
 
 // SPRITE TO BG
-void		sprite_to_bg_img(t_game *game, t_data *sprite, int x, int y);
-void		sprite_to_bg_img_hflip(t_game *game, t_data *sprite, int x, int y);
-void		sprite_to_bg_img_vflip(t_game *game, t_data *sprite, int x, int y);
-void		sprite_to_bg_img_rotr(t_game *game, t_data *sprite, int x, int y);
-void		sprite_to_bg_img_rotl(t_game *game, t_data *sprite, int x, int y);
+void		sprite_to_bg(t_game *game, t_data *sprite, int x, int y);
+void		sprite_to_bg_hflip(t_game *game, t_data *sprite, int x, int y);
+void		sprite_to_bg_vflip(t_game *game, t_data *sprite, int x, int y);
+void		sprite_to_bg_rotr(t_game *game, t_data *sprite, int x, int y);
+void		sprite_to_bg_rotl(t_game *game, t_data *sprite, int x, int y);
+void		sprite_to_bg_mirr(t_game *game, t_data *sprite, int x, int y);
+
+// sim, há mais
+void		gap_to_bg_h(t_game *game, t_data *sprite, int x, int y);
+void		gap_to_bg_hflip(t_game *game, t_data *sprite, int x, int y);
+void		gap_to_bg_h_vflip(t_game *game, t_data *sprite, int x, int y);
+void		corn_to_bg(t_game *game, t_data *sprite, int x, int y);
+void		square_to_bg(t_game *game, int color, int x, int y);
+void		rectangle_to_bg(t_game *game, int color, int x, int y);
 
 // SPRITE TO HELPERS
 int			get_pixel(t_data *data, int x, int y);
 void		put_pixel(t_data *data, int x, int y, int color);
-void		gap_to_bg_img(t_game *game, t_data *sprite, int x, int y);
-void		sprite_to_fg_img(t_game *game, t_data *sprite, int x, int y);
+void		gap_to_bg(t_game *game, t_data *sprite, int x, int y);
+void		sprite_to_fg(t_game *game, t_data *sprite, int x, int y);
 
 // LOOP
-int			put_player(t_game *game);
+int			render_game(t_game *game);
 int			player_move(int key, t_game *game);
 void		move_check(t_game *game, int axis, int dir);
 

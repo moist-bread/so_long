@@ -6,7 +6,7 @@
 #    By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 12:30:07 by rduro-pe          #+#    #+#              #
-#    Updated: 2025/01/24 13:52:12 by rduro-pe         ###   ########.fr        #
+#    Updated: 2025/01/26 16:08:54 by rduro-pe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ MLX = ./inc/minilibx_linux/libmlx.a
 MAIN    =   so_long_main.c 
 SOURCES =	map_parsing.c make_map.c map_full_check.c \
 			set_game.c set_sprites.c make_data.c \
-			destroyers.c make_bg.c sprite_to_bg.c sprite_to_helpers.c \
+			destroyers.c make_bg.c make_fg.c sprite_to_bg.c sprite_to_helpers.c \
 			loop.c \
 			tests.c \
 
