@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 10:31:49 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/26 17:48:54 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/26 23:52:23 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,13 @@ typedef struct s_game
 // TBD
 void		new_sprite_to_bg(t_game *game, t_data *sprite, t_cord sprt,
 				t_cord win);
+void		new_sprite_to_bg_mirr(t_game *game, t_data *sprite, t_cord sprt,
+				t_cord win);
+void		new_sprite_to_bg_vflip(t_game *game, t_data *sprite, t_cord sprt,
+				t_cord win);
+void		new_sprite_to_bg_hflip(t_game *game, t_data *sprite, t_cord sprt,
+				t_cord win);
+void		wall_selector(t_game *game, int y, int x);
 
 // MAIN
 void		game_start(t_map *map);
@@ -203,26 +210,19 @@ void		fill_gap(t_game *game);
 void		add_decor(t_game *game);
 
 // SPRITE TO BG
-void		sprite_to_bg(t_game *game, t_data *sprite, int x, int y);
-void		sprite_to_bg_hflip(t_game *game, t_data *sprite, int x, int y);
-void		sprite_to_bg_vflip(t_game *game, t_data *sprite, int x, int y);
 void		sprite_to_bg_rotr(t_game *game, t_data *sprite, int x, int y);
 void		sprite_to_bg_rotl(t_game *game, t_data *sprite, int x, int y);
-void		sprite_to_bg_mirr(t_game *game, t_data *sprite, int x, int y);
 
 // sim, há mais
 void		gap_to_bg_h(t_game *game, t_data *sprite, int x, int y);
 void		gap_to_bg_hflip(t_game *game, t_data *sprite, int x, int y);
 void		gap_to_bg_h_vflip(t_game *game, t_data *sprite, int x, int y);
-void		corn_to_bg(t_game *game, t_data *sprite, int x, int y);
 void		square_to_bg(t_game *game, int color, int x, int y);
 void		rectangle_to_bg(t_game *game, int color, int x, int y);
 
 // SPRITE TO HELPERS
 int			get_pixel(t_data *data, int x, int y);
 void		put_pixel(t_data *data, int x, int y, int color);
-void		gap_to_bg(t_game *game, t_data *sprite, int x, int y);
-void		sprite_to_fg(t_game *game, t_data *sprite, int x, int y);
 
 // LOOP
 int			render_game(t_game *game);

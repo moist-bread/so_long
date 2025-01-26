@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 15:31:05 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/26 17:52:08 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/26 23:50:18 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,11 @@ void	put_border(t_game *game, t_map *map)
 	}
 	while (--y >= 0)
 	{
-		sprite_to_bg(game, game->sprite->bord, 0, y * game->spr_size);
-		sprite_to_bg_hflip(game, game->sprite->bord, ((x - 1) * game->spr_size)
-			+ (2 * game->offset), y * game->spr_size);
+		new_sprite_to_bg(game, game->sprite->bord, (t_cord){game->spr_size,
+			game->spr_size}, (t_cord){0, y * game->spr_size});
+		new_sprite_to_bg_hflip(game, game->sprite->bord,
+			(t_cord){game->spr_size, game->spr_size}, (t_cord){((x - 1)
+				* game->spr_size) + 2 * game->offset, y * game->spr_size});
 	}
 }
 
@@ -47,17 +49,19 @@ void	put_bevel(t_game *game)
 	x = -1;
 	while (++y < game->map->heigth)
 	{
-		gap_to_bg(game, game->sprite->bevel, game->spr_size - 15 + game->offset,
-			(y + 1) * game->spr_size);
-		gap_to_bg_hflip(game, game->sprite->bevel, (game->map->width + 1)
-			* game->spr_size + game->offset, (y + 1) * game->spr_size);
+		new_sprite_to_bg(game, game->sprite->bevel, (t_cord){15,
+			game->spr_size}, (t_cord){game->spr_size - 15 + game->offset, (y
+				+ 1) * game->spr_size});
+		new_sprite_to_bg_hflip(game, game->sprite->bevel, (t_cord){15,
+			game->spr_size}, (t_cord){(game->map->width + 1) * game->spr_size
+			+ game->offset, (y + 1) * game->spr_size});
 	}
 	while (++x < game->map->width)
 	{
-		gap_to_bg_h_vflip(game, game->sprite->bevel, (x + 1) * game->spr_size
-			+ game->offset, game->spr_size - 15);
 		gap_to_bg_h(game, game->sprite->bevel, (x + 1) * game->spr_size
 			+ game->offset, (y + 1) * game->spr_size);
+		gap_to_bg_h_vflip(game, game->sprite->bevel, (x + 1) * game->spr_size
+			+ game->offset, game->spr_size - 15);
 	}
 }
 
@@ -76,18 +80,23 @@ void	put_corner(t_game *game, int size)
 		y = (game->map->heigth + 1) * size;
 		x = (game->map->width + 1) * size + 2 * game->offset;
 	}
-	sprite_to_bg(game, game->sprite->bord_c, 0, 0);
-	sprite_to_bg_vflip(game, game->sprite->bord_c, 0, y);
-	sprite_to_bg_hflip(game, game->sprite->bord_c, x, 0);
-	sprite_to_bg_mirr(game, game->sprite->bord_c, x, y);
-	corn_to_bg(game, game->sprite->bevel_c, size - 15 + game->offset, size
-		- 15);
-	corn_to_bg(game, game->sprite->bevel_c, size - 15 + game->offset,
-		(game->map->heigth + 1) * size);
-	corn_to_bg(game, game->sprite->bevel_c, (game->map->width + 1) * size
-		+ game->offset, size - 15);
-	corn_to_bg(game, game->sprite->bevel_c, (game->map->width + 1) * size
-		+ game->offset, (game->map->heigth + 1) * size);
+	new_sprite_to_bg(game, game->sprite->bord_c, (t_cord){game->spr_size,
+		game->spr_size}, (t_cord){0, 0});
+	new_sprite_to_bg_vflip(game, game->sprite->bord_c, (t_cord){game->spr_size,
+		game->spr_size}, (t_cord){0, y});
+	new_sprite_to_bg_hflip(game, game->sprite->bord_c, (t_cord){game->spr_size,
+		game->spr_size}, (t_cord){x, 0});
+	new_sprite_to_bg_mirr(game, game->sprite->bord_c, (t_cord){game->spr_size,
+		game->spr_size}, (t_cord){x, y});
+	new_sprite_to_bg(game, game->sprite->bevel_c, (t_cord){15, 15},
+		(t_cord){size - 15 + game->offset, size - 15});
+	new_sprite_to_bg_vflip(game, game->sprite->bevel_c, (t_cord){15, 15},
+		(t_cord){size - 15 + game->offset, (game->map->heigth + 1) * size});
+	new_sprite_to_bg_hflip(game, game->sprite->bevel_c, (t_cord){15, 15},
+		(t_cord){(game->map->width + 1) * size + game->offset, size - 15});
+	new_sprite_to_bg_mirr(game, game->sprite->bevel_c, (t_cord){15, 15},
+		(t_cord){(game->map->width + 1) * size + game->offset,
+		(game->map->heigth + 1) * size});
 }
 
 void	fill_gap(t_game *game)
