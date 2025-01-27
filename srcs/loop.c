@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 08:57:12 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/26 16:34:41 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/27 16:23:16 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,10 @@ void	move_check(t_game *game, int axis, int dir)
 		&& game->map->map[game->map->ps_cord.y][game->map->ps_cord.x
 		+ dir] != '1')
 		game->map->ps_cord.x += dir;
+}
+
+int	close_x(t_game *game)
+{
+	game_destroyer_3000(game, game->map, 10);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 14:12:21 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/26 15:17:16 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/27 14:17:52 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	data_making_checker(t_game *game, int type)
 			|| !game->sprite->wall_c->img || !game->sprite->exit_c->img
 			|| !game->sprite->exit_o->img || !game->sprite->colt->img
 			|| !game->sprite->chara_1->img || !game->sprite->chara_2->img)
-			game_destroyer_3000(game, game->map, 6);
+		game_destroyer_3000(game, game->map, 6);
 }
 
 void	get_sprite_data_bg(t_game *game)

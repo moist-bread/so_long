@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 14:15:02 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/26 16:10:37 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/27 11:46:04 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,8 @@
 
 void	set_sprites_big(t_game *game, int gap)
 {
+	set_sprites_both(game, gap);
 	ft_printf("setting big sprites (small map)\n");
-	game->sprite->bord->img = mlx_xpm_file_to_image(game->mlx, BORD,
-			&game->spr_size, &game->spr_size);
-	game->sprite->bord_c->img = mlx_xpm_file_to_image(game->mlx, BORDC,
-			&game->spr_size, &game->spr_size);
-	game->sprite->bevel->img = mlx_xpm_file_to_image(game->mlx, BVL, &gap,
-			&game->spr_size);
-	game->sprite->bevel_c->img = mlx_xpm_file_to_image(game->mlx, BVLC, &gap,
-			&gap);
-	game->sprite->speaker->img = mlx_xpm_file_to_image(game->mlx, SPKR, &gap,
-			&gap);
-	game->sprite->logo->img = mlx_xpm_file_to_image(game->mlx, LOGO, &gap,
-			&gap);
-	game->sprite->button->img = mlx_xpm_file_to_image(game->mlx, BTN, &gap,
-			&gap);
-	game->sprite->arrow->img = mlx_xpm_file_to_image(game->mlx, ARRW, &gap,
-			&gap);
-	game->spr_size = 90;
-	set_sprites_fg_big(game);
-}
-
-void	set_sprites_fg_big(t_game *game)
-{
-	ft_printf("setting big fg sprites (small map)\n");
 	game->sprite->empty_1->img = mlx_xpm_file_to_image(game->mlx, EMPTY1,
 			&game->spr_size, &game->spr_size);
 	game->sprite->empty_2->img = mlx_xpm_file_to_image(game->mlx, EMPTY2,
@@ -63,30 +41,8 @@ void	set_sprites_fg_big(t_game *game)
 
 void	set_sprites_small(t_game *game, int gap)
 {
+	set_sprites_both(game, gap);
 	ft_printf("setting small bg sprites (big map)\n");
-	game->sprite->bord->img = mlx_xpm_file_to_image(game->mlx, SBORD,
-			&game->spr_size, &game->spr_size);
-	game->sprite->bord_c->img = mlx_xpm_file_to_image(game->mlx, SBORDC,
-			&game->spr_size, &game->spr_size);
-	game->sprite->bevel->img = mlx_xpm_file_to_image(game->mlx, SBVL, &gap,
-			&game->spr_size);
-	game->sprite->bevel_c->img = mlx_xpm_file_to_image(game->mlx, SBVLC, &gap,
-			&gap);
-	game->sprite->speaker->img = mlx_xpm_file_to_image(game->mlx, SSPKR, &gap,
-			&gap);
-	game->sprite->logo->img = mlx_xpm_file_to_image(game->mlx, SLOGO, &gap,
-			&gap);
-	game->sprite->button->img = mlx_xpm_file_to_image(game->mlx, SBTN, &gap,
-			&gap);
-	game->sprite->arrow->img = mlx_xpm_file_to_image(game->mlx, SARRW, &gap,
-			&gap);
-	game->spr_size = 45;
-	set_sprites_fg_small(game);
-}
-
-void	set_sprites_fg_small(t_game *game)
-{
-	ft_printf("setting small fg sprites (big map)\n");
 	game->sprite->empty_1->img = mlx_xpm_file_to_image(game->mlx, SEMPTY1,
 			&game->spr_size, &game->spr_size);
 	game->sprite->empty_2->img = mlx_xpm_file_to_image(game->mlx, SEMPTY2,
@@ -108,4 +64,25 @@ void	set_sprites_fg_small(t_game *game)
 	game->sprite->chara_2->img = mlx_xpm_file_to_image(game->mlx, SCHARA2,
 			&game->spr_size, &game->spr_size);
 	game->spr_size = 45;
+}
+
+void	set_sprites_both(t_game *game, int gap)
+{
+	ft_printf("setting overlap sprites\n");
+	game->sprite->bord->img = mlx_xpm_file_to_image(game->mlx, BORD,
+			&game->spr_size, &game->spr_size);
+	game->sprite->bord_c->img = mlx_xpm_file_to_image(game->mlx, BORDC,
+			&game->spr_size, &game->spr_size);
+	game->sprite->bevel->img = mlx_xpm_file_to_image(game->mlx, BVL, &gap,
+			&game->spr_size);
+	game->sprite->bevel_c->img = mlx_xpm_file_to_image(game->mlx, BVLC, &gap,
+			&gap);
+	game->sprite->speaker->img = mlx_xpm_file_to_image(game->mlx, SPKR, &gap,
+			&gap);
+	game->sprite->logo->img = mlx_xpm_file_to_image(game->mlx, LOGO, &gap,
+			&gap);
+	game->sprite->button->img = mlx_xpm_file_to_image(game->mlx, BTN, &gap,
+			&gap);
+	game->sprite->arrow->img = mlx_xpm_file_to_image(game->mlx, ARRW, &gap,
+			&gap);
 }

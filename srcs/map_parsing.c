@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 16:38:04 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/14 17:19:48 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/27 19:26:11 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void	valid_path_check(int seen_colt, t_map *map)
 // 5: invalid characters
 // 6: duplicates or no colt
 // 7: no path
+// 8: missing sprites
 
 void	error_exit(int ret, t_map *map)
 {
@@ -116,6 +117,8 @@ void	error_exit(int ret, t_map *map)
 		ft_printf("\nGiven Map contains incorrect amount of elements\n");
 	else if (ret == 7)
 		ft_printf("\nGiven Map has no valid path\n");
+	else if (ret == 8)
+		ft_printf("\nMissing sprites, can't game :(\n");
 	if (map->error || map->heigth <= 2)
 		free_map(map, map->heigth);
 	ft_printf("exit(%d)\n", ret);

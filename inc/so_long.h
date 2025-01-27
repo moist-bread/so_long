@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 10:31:49 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/26 23:52:23 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/27 19:36:24 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,17 @@
 
 // DEFINES
 
-// big asset paths
-// big bg
-# define BORD "./textures/big/border.xpm"
-# define BORDC "./textures/big/border_c.xpm"
-# define BVL "./textures/big/bevel.xpm"
-# define BVLC "./textures/big/bevel_c.xpm"
-# define SPKR "./textures/big/speaker.xpm"
-# define LOGO "./textures/big/logo.xpm"
-# define BTN "./textures/big/button.xpm"
-# define ARRW "./textures/big/arrow.xpm"
+// universal asset paths
+# define BORD "./textures/border.xpm"
+# define BORDC "./textures/border_c.xpm"
+# define BVL "./textures/bevel.xpm"
+# define BVLC "./textures/bevel_c.xpm"
+# define SPKR "./textures/speaker.xpm"
+# define LOGO "./textures/logo.xpm"
+# define BTN "./textures/button.xpm"
+# define ARRW "./textures/arrow.xpm"
 
-// big fg
+// big asset paths
 # define EMPTY1 "./textures/big/empty_1.xpm"
 # define EMPTY2 "./textures/big/empty_2.xpm"
 # define WALL "./textures/big/wall.xpm"
@@ -48,17 +47,6 @@
 # define CHARA2 "./textures/big/chara_2.xpm"
 
 // small asset paths
-// small bg
-# define SBORD "./textures/small/border.xpm"
-# define SBORDC "./textures/small/border_c.xpm"
-# define SBVL "./textures/small/bevel.xpm"
-# define SBVLC "./textures/small/bevel_c.xpm"
-# define SSPKR "./textures/small/speaker.xpm"
-# define SLOGO "./textures/small/logo.xpm"
-# define SBTN "./textures/small/button.xpm"
-# define SARRW "./textures/small/arrow.xpm"
-
-// small fg
 # define SEMPTY1 "./textures/small/empty_1.xpm"
 # define SEMPTY2 "./textures/small/empty_2.xpm"
 # define SWALL "./textures/small/wall.xpm"
@@ -139,18 +127,10 @@ typedef struct s_game
 }			t_game;
 
 // TBD
-void		new_sprite_to_bg(t_game *game, t_data *sprite, t_cord sprt,
-				t_cord win);
-void		new_sprite_to_bg_mirr(t_game *game, t_data *sprite, t_cord sprt,
-				t_cord win);
-void		new_sprite_to_bg_vflip(t_game *game, t_data *sprite, t_cord sprt,
-				t_cord win);
-void		new_sprite_to_bg_hflip(t_game *game, t_data *sprite, t_cord sprt,
-				t_cord win);
-void		wall_selector(t_game *game, int y, int x);
 
 // MAIN
 void		game_start(t_map *map);
+void		sprite_checker(t_map *map);
 
 // MAP PARSING
 int			map_parsing(char *map_file, t_map **map);
@@ -180,9 +160,8 @@ void		set_imgs(t_game *game);
 
 // SET SPRITES
 void		set_sprites_big(t_game *game, int gap);
-void		set_sprites_fg_big(t_game *game);
 void		set_sprites_small(t_game *game, int gap);
-void		set_sprites_fg_small(t_game *game);
+void		set_sprites_both(t_game *game, int gap);
 
 // MAKE DATA
 void		make_sprite_data(t_game *game);
@@ -201,6 +180,7 @@ void		sprite_fg_destroyer(t_game *game);
 // MAKE FG
 void		put_map(t_game *game, t_map *map);
 void		put_sprite(t_game *game, int y, int x, int type);
+void		wall_selector(t_game *game, int y, int x);
 
 // MAKE BG
 void		put_border(t_game *game, t_map *map);
@@ -208,19 +188,24 @@ void		put_bevel(t_game *game);
 void		put_corner(t_game *game, int size);
 void		fill_gap(t_game *game);
 void		add_decor(t_game *game);
+void		assign_xy(t_game *game, int *x, int *y, int zone);
 
 // SPRITE TO BG
-void		sprite_to_bg_rotr(t_game *game, t_data *sprite, int x, int y);
-void		sprite_to_bg_rotl(t_game *game, t_data *sprite, int x, int y);
-
-// sim, há mais
-void		gap_to_bg_h(t_game *game, t_data *sprite, int x, int y);
-void		gap_to_bg_hflip(t_game *game, t_data *sprite, int x, int y);
-void		gap_to_bg_h_vflip(t_game *game, t_data *sprite, int x, int y);
-void		square_to_bg(t_game *game, int color, int x, int y);
-void		rectangle_to_bg(t_game *game, int color, int x, int y);
+void		new_sprite_to_bg(t_game *game, t_data *sprite, t_cord sprt,
+				t_cord win);
+void		new_sprite_to_bg_vflip(t_game *game, t_data *sprite, t_cord sprt,
+				t_cord win);
+void		new_sprite_to_bg_hflip(t_game *game, t_data *sprite, t_cord sprt,
+				t_cord win);
+void		new_sprite_to_bg_rotr(t_game *game, t_data *sprite, t_cord sprt,
+				t_cord win);
+void		new_sprite_to_bg_rotl(t_game *game, t_data *sprite, t_cord sprt,
+				t_cord win);
 
 // SPRITE TO HELPERS
+void		new_sprite_to_bg_mirr(t_game *game, t_data *sprite, t_cord sprt,
+				t_cord win);
+void		colorblock_to_bg(t_game *game, int color, t_cord sprt, t_cord win);
 int			get_pixel(t_data *data, int x, int y);
 void		put_pixel(t_data *data, int x, int y, int color);
 
@@ -228,6 +213,7 @@ void		put_pixel(t_data *data, int x, int y, int color);
 int			render_game(t_game *game);
 int			player_move(int key, t_game *game);
 void		move_check(t_game *game, int axis, int dir);
+int			close_x(t_game *game);
 
 // TESTS
 void		game_stort_test(t_map *map);

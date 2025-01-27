@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 16:15:33 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/26 16:47:12 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/27 19:22:12 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		return (2);
 	map_parsing(argv[1], &map);
-	// - check if the sprite xpms exist
-	// game_stort_test(map);
-	// game_stort_test2(map);
+	sprite_checker(map);
 	game_start(map);
 	return (0);
 }
@@ -37,7 +35,31 @@ void	game_start(t_map *map)
 	put_corner(game, game->spr_size);
 	add_decor(game);
 	put_map(game, map);
+	mlx_hook(game->win, 17, 0, close_x, game);
 	mlx_loop_hook(game->mlx, render_game, game);
 	mlx_key_hook(game->win, player_move, game);
 	mlx_loop(game->mlx);
+}
+
+void	sprite_checker(t_map *map)
+{
+	int			fd;
+	int			i;
+	const char	*paths[28] = {BORD, BORDC, BVL, BVLC, SPKR, LOGO, BTN, ARRW,
+		EMPTY1, EMPTY2, WALL, WALLM, WALLC, EXITC, EXITO, COLT, CHARA1,
+		CHARA2, SEMPTY1, SEMPTY2, SWALL, SWALLM, SWALLC, SEXITC, SEXITO,
+		SCOLT, SCHARA1, SCHARA2};
+
+	i = -1;
+	while (++i < 28)
+	{
+		fd = open(paths[i], O_RDONLY);
+		if (fd > 2)
+			close(fd);
+		else
+		{
+			map->error = 8;
+			error_exit(map->error, map);
+		}
+	}
 }
