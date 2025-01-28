@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 10:31:49 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/27 19:36:24 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/28 08:12:56 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,8 +118,9 @@ typedef struct s_game
 	void	*mlx;
 	void	*win;
 	int		offset;
-	int		spr_size;
+	int		size;
 	int		collected;
+	int		chara_dir;
 	t_sprt	*sprite;
 	t_data	*bg;
 	t_data	*fg;
@@ -177,18 +178,18 @@ void		img_fg_destroyer(t_game *game);
 void		sprite_destroyer(t_game *game);
 void		sprite_fg_destroyer(t_game *game);
 
+// MAKE BG
+void		put_border(t_game *game, t_map *map);
+void		fill_gap(t_game *game);
+void		put_bevel(t_game *game);
+void		put_corner(t_game *game, int size);
+void		assign_xy(t_game *game, int *x, int *y, int zone);
+
 // MAKE FG
+void		add_decor(t_game *game);
 void		put_map(t_game *game, t_map *map);
 void		put_sprite(t_game *game, int y, int x, int type);
 void		wall_selector(t_game *game, int y, int x);
-
-// MAKE BG
-void		put_border(t_game *game, t_map *map);
-void		put_bevel(t_game *game);
-void		put_corner(t_game *game, int size);
-void		fill_gap(t_game *game);
-void		add_decor(t_game *game);
-void		assign_xy(t_game *game, int *x, int *y, int zone);
 
 // SPRITE TO BG
 void		new_sprite_to_bg(t_game *game, t_data *sprite, t_cord sprt,
@@ -211,17 +212,9 @@ void		put_pixel(t_data *data, int x, int y, int color);
 
 // LOOP
 int			render_game(t_game *game);
+void		player_sprite_selector(t_game *game);
 int			player_move(int key, t_game *game);
 void		move_check(t_game *game, int axis, int dir);
 int			close_x(t_game *game);
-
-// TESTS
-void		game_stort_test(t_map *map);
-void		game_stort_test2(t_map *map);
-void		make_square(char *addr, int line_length, int bits_per_pixel);
-void		make_grid(char *addr, int line_length, int bits_per_pixel);
-void		my_mlx_pixel_put(char *addr, int line_length, int bits_per_pixel,
-				int y, int x, int color);
-int			key_win1(int key, void *p);
 
 #endif

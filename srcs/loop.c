@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 08:57:12 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/27 16:23:16 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/28 08:08:35 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,40 +32,46 @@ int	render_game(t_game *game)
 	{
 		game_destroyer_3000(game, game->map, 10);
 	}
-	// mlx_put_image_to_window(game->mlx, game->win, game->fg->img, 0, 0);
 	mlx_put_image_to_window(game->mlx, game->win, game->bg->img, 0, 0);
-	mlx_put_image_to_window(game->mlx, game->win, game->sprite->chara_1->img,
-		((game->map->ps_cord.x + 1) * game->spr_size) + game->offset,
-		(game->map->ps_cord.y + 1) * game->spr_size);
+	player_sprite_selector(game);
 	return (0);
+}
+
+void	player_sprite_selector(t_game *game)
+{
+	if (game->chara_dir == 'R')
+	{
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->sprite->chara_1->img, ((game->map->ps_cord.x + 1)
+				* game->size) + game->offset, (game->map->ps_cord.y + 1)
+			* game->size);
+	}
+	else if (game->chara_dir == 'L')
+	{
+		mlx_put_image_to_window(game->mlx, game->win,
+			game->sprite->chara_2->img, ((game->map->ps_cord.x + 1)
+				* game->size) + game->offset, (game->map->ps_cord.y + 1)
+			* game->size);
+	}
 }
 
 int	player_move(int key, t_game *game)
 {
 	ft_printf("%d (key)\n", key);
 	if (key == 65307)
-	{
-		ft_printf("shut down\n");
 		game_destroyer_3000(game, game->map, 10);
-	}
 	else if (key == 'w' || key == 65362)
-	{
-		ft_printf("we go up\n");
 		move_check(game, 'y', -1);
-	}
 	else if (key == 'a' || key == 65361)
 	{
-		ft_printf("slide to the left\n");
+		game->chara_dir = 'L';
 		move_check(game, 'x', -1);
 	}
 	else if (key == 's' || key == 65364)
-	{
-		ft_printf("we going down down\n");
 		move_check(game, 'y', 1);
-	}
 	else if (key == 'd' || key == 65363)
 	{
-		ft_printf("slide to the right\n");
+		game->chara_dir = 'R';
 		move_check(game, 'x', 1);
 	}
 	ft_printf("%d(ps y) %d (ps x)\n", game->map->ps_cord.y,
@@ -77,11 +83,15 @@ void	move_check(t_game *game, int axis, int dir)
 {
 	if (axis == 'y' && game->map->map[game->map->ps_cord.y
 		+ dir][game->map->ps_cord.x] != '1')
+	{
 		game->map->ps_cord.y += dir;
+	}
 	else if (axis == 'x'
 		&& game->map->map[game->map->ps_cord.y][game->map->ps_cord.x
 		+ dir] != '1')
+	{
 		game->map->ps_cord.x += dir;
+	}
 }
 
 int	close_x(t_game *game)

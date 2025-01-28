@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 22:06:56 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/26 16:31:43 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/28 08:11:18 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	set_game(t_game **game, t_map *map)
 
 void	set_assets(t_game *game)
 {
+	game->chara_dir = 'R';
 	game->sprite = malloc(sizeof(t_sprt));
 	if (!game->sprite)
 		game_destroyer_3000(game, game->map, 4);
@@ -51,7 +52,7 @@ void	set_assets(t_game *game)
 		set_sprites_big(game, 15);
 	else
 		set_sprites_small(game, 15);
-	ft_printf("set sprites %d (success)\n", game->spr_size);
+	ft_printf("set sprites %d (success)\n", game->size);
 	data_making_checker(game, 2);
 	get_sprite_data_bg(game);
 	get_sprite_data_fg(game);
@@ -82,11 +83,8 @@ void	set_imgs(t_game *game)
 	}
 	if (!game->bg->img || !game->fg->img)
 		game_destroyer_3000(game, game->map, 8);
-	ft_printf("malloc ground data (success)\n");
-	ft_printf("getting bg and fg data\n");
 	game->bg->addr = mlx_get_data_addr(game->bg->img, &game->bg->bpp,
 			&game->bg->len, &game->bg->endian);
 	game->fg->addr = mlx_get_data_addr(game->fg->img, &game->fg->bpp,
 			&game->fg->len, &game->fg->endian);
-	ft_printf("get ground data (success)\n");
 }

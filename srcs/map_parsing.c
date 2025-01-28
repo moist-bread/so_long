@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 16:38:04 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/27 19:26:11 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/28 07:56:51 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,9 @@ int	map_parsing(char *map_file, t_map **map)
 	if (!*map)
 		return (error_exit(1, *map), 1);
 	map_fd = open(map_file, O_RDONLY);
-	//		checks if file exists and if it's .ber
 	if (map_fd < 3 || ft_strncmp(".ber", map_file + ft_strlen(map_file) - 4, 4))
 		return (close(map_fd), error_exit(2, *map), 2);
-	//		gives map heigth and if theyre all the same len
-	row_check(map_fd, *map); // -make it return in case of malloc error
+	row_check(map_fd, *map);
 	close(map_fd);
 	if ((*map)->heigth <= 2 || (*map)->width <= 2 || (*map)->error)
 		return (error_exit(3, *map), 3);
@@ -33,7 +31,6 @@ int	map_parsing(char *map_file, t_map **map)
 	map_fd = open(map_file, O_RDONLY);
 	if (make_map(map_fd, *map))
 		return (close(map_fd), error_exit(1, *map), 1);
-	//		checks all map misconfiguration errors
 	map_full_check(*map);
 	if (!close(map_fd) && (*map)->error)
 		return (error_exit((*map)->error, *map), 4);

@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:55:59 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/27 15:17:22 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/28 08:11:28 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 // 5 sprites didnt malloc
 // 6 sprite imgs didnt create
 // 7 game bg didnt malloc
-// 8 game fg didnt malloc
+// 8 game fg didnt mallocS
 // 9 bg fg img didnt create
 // 10 end of program
 
