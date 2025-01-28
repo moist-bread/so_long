@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 16:15:33 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/28 07:51:05 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/28 15:12:14 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@ void	game_start(t_map *map)
 	add_decor(game);
 	put_map(game, map);
 	mlx_loop_hook(game->mlx, render_game, game);
-	mlx_key_hook(game->win, player_move, game);
+	// mlx_key_hook(game->win, player_move, game);
 	mlx_hook(game->win, 17, 0, close_x, game);
+	mlx_hook(game->win, 2, (1L << 0), player_move, game);
 	mlx_loop(game->mlx);
 }
 

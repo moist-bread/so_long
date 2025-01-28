@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 16:02:16 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/28 08:01:35 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/01/28 14:15:22 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 
 void	add_decor(t_game *game)
 {
+	new_sprite_to_bg(game, game->sprite->speaker, (t_cord){45, 45},
+		(t_cord){game->size - 15 + game->offset - 45, game->map->heigth
+		* game->size - game->offset});
+	new_sprite_to_bg_hflip(game, game->sprite->speaker, (t_cord){45, 45},
+		(t_cord){(game->map->width + 1) * game->size + game->offset + 15,
+		game->map->heigth * game->size - game->offset});
 	if (game->map->heigth <= 10 && game->map->width <= 19)
 		return ;
 	if (game->map->width <= 35)
