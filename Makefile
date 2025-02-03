@@ -6,7 +6,7 @@
 #    By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 12:30:07 by rduro-pe          #+#    #+#              #
-#    Updated: 2025/01/28 08:09:12 by rduro-pe         ###   ########.fr        #
+#    Updated: 2025/02/03 14:02:23 by rduro-pe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,6 +83,14 @@ exe5: all
 
 exe6: all
 	./so_long ./maps/map6.ber
+
+exe7: all
+	./so_long ./maps/map7.ber
+
+
+exe8: all
+	./so_long ./maps/map8.ber
+	
 # ★☆★-‵,┊( STANDARD RULES )┊.´-★☆★
 clean:
 	@make clean -C ./inc/libft -s

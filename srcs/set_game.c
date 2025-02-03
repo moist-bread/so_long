@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 22:06:56 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/28 08:11:18 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/02/03 12:48:01 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ int	set_game(t_game **game, t_map *map)
 	{
 		(*game)->win = mlx_new_window((*game)->mlx, (map->width + 2) * 90,
 				(map->heigth + 2) * 90, "window dinamic");
-		(*game)->offset = 0;
+		(*game)->gap = 0;
 	}
 	else
 	{
 		(*game)->win = mlx_new_window((*game)->mlx, 1920, 1080, "window big");
-		(*game)->offset = 15;
+		(*game)->gap = 15;
 	}
 	if (!(*game)->win)
 		game_destroyer_3000(*game, map, 3);
@@ -49,9 +49,15 @@ void	set_assets(t_game *game)
 		game_destroyer_3000(game, game->map, 4);
 	make_sprite_data(game);
 	if (game->map->heigth <= 10 && game->map->width <= 19)
+	{
 		set_sprites_big(game, 15);
+		game->offset = 0;
+	}
 	else
+	{
 		set_sprites_small(game, 15);
+		game->offset = 45;	
+	}
 	ft_printf("set sprites %d (success)\n", game->size);
 	data_making_checker(game, 2);
 	get_sprite_data_bg(game);

@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 10:31:49 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/28 08:12:56 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/02/03 14:13:02 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ typedef struct s_game
 	void	*mlx;
 	void	*win;
 	int		offset;
+	int		gap;
 	int		size;
 	int		collected;
 	int		chara_dir;
@@ -214,7 +215,7 @@ void		put_pixel(t_data *data, int x, int y, int color);
 int			render_game(t_game *game);
 void		player_sprite_selector(t_game *game);
 int			player_move(int key, t_game *game);
-void		move_check(t_game *game, int axis, int dir);
+void		move_check(t_game *game, int axis, int dir, int key);
 int			close_x(t_game *game);
 
 #endif
