@@ -1,12 +1,12 @@
 /* XPM */
-static char *_71c5f6f73924f31bef3470f01861a52ZxxtUaGnrBSwHN4v[] = {
+static char *_052b94ac6c74de7cef5a9b2b272c7c66Q9WuPpeiApLMBUQ[] = {
 /* columns rows colors chars-per-pixel */
 "15 15 5 1 ",
-"  c gray15",
-". c #535353",
-"X c #717171",
-"o c gray78",
-"O c gray94",
+"  c #0D2624",
+". c #1C5352",
+"X c #2E7170",
+"o c #ADC7C7",
+"O c #E9F0F0",
 /* pixels */
 "oOooooooooOoooo",
 "ooooooOOOOOOOOO",
