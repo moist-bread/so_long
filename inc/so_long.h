@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 10:31:49 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/02/03 14:13:02 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/02/09 10:01:03 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,19 +193,19 @@ void		put_sprite(t_game *game, int y, int x, int type);
 void		wall_selector(t_game *game, int y, int x);
 
 // SPRITE TO BG
-void		new_sprite_to_bg(t_game *game, t_data *sprite, t_cord sprt,
+void		sprite_to_bg(t_game *game, t_data *sprite, t_cord sprt,
 				t_cord win);
-void		new_sprite_to_bg_vflip(t_game *game, t_data *sprite, t_cord sprt,
+void		sprite_to_bg_vflip(t_game *game, t_data *sprite, t_cord sprt,
 				t_cord win);
-void		new_sprite_to_bg_hflip(t_game *game, t_data *sprite, t_cord sprt,
+void		sprite_to_bg_hflip(t_game *game, t_data *sprite, t_cord sprt,
 				t_cord win);
-void		new_sprite_to_bg_rotr(t_game *game, t_data *sprite, t_cord sprt,
+void		sprite_to_bg_rotr(t_game *game, t_data *sprite, t_cord sprt,
 				t_cord win);
-void		new_sprite_to_bg_rotl(t_game *game, t_data *sprite, t_cord sprt,
+void		sprite_to_bg_rotl(t_game *game, t_data *sprite, t_cord sprt,
 				t_cord win);
 
 // SPRITE TO HELPERS
-void		new_sprite_to_bg_mirr(t_game *game, t_data *sprite, t_cord sprt,
+void		sprite_to_bg_mirr(t_game *game, t_data *sprite, t_cord sprt,
 				t_cord win);
 void		colorblock_to_bg(t_game *game, int color, t_cord sprt, t_cord win);
 int			get_pixel(t_data *data, int x, int y);

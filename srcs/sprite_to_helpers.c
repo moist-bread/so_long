@@ -6,14 +6,13 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 09:02:09 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/28 07:27:47 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/02/09 10:01:02 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	new_sprite_to_bg_mirr(t_game *game, t_data *sprite, t_cord sprt,
-		t_cord win)
+void	sprite_to_bg_mirr(t_game *game, t_data *sprite, t_cord sprt, t_cord win)
 {
 	unsigned int	color;
 	int				wid;

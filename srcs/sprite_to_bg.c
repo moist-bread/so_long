@@ -6,13 +6,13 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 08:42:08 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/27 18:50:29 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/02/09 10:01:02 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	new_sprite_to_bg(t_game *game, t_data *sprite, t_cord sprt, t_cord win)
+void	sprite_to_bg(t_game *game, t_data *sprite, t_cord sprt, t_cord win)
 {
 	unsigned int	color;
 	int				wid;
@@ -31,7 +31,7 @@ void	new_sprite_to_bg(t_game *game, t_data *sprite, t_cord sprt, t_cord win)
 	}
 }
 
-void	new_sprite_to_bg_hflip(t_game *game, t_data *sprite, t_cord sprt,
+void	sprite_to_bg_hflip(t_game *game, t_data *sprite, t_cord sprt,
 		t_cord win)
 {
 	unsigned int	color;
@@ -51,7 +51,7 @@ void	new_sprite_to_bg_hflip(t_game *game, t_data *sprite, t_cord sprt,
 	}
 }
 
-void	new_sprite_to_bg_vflip(t_game *game, t_data *sprite, t_cord sprt,
+void	sprite_to_bg_vflip(t_game *game, t_data *sprite, t_cord sprt,
 		t_cord win)
 {
 	unsigned int	color;
@@ -71,7 +71,7 @@ void	new_sprite_to_bg_vflip(t_game *game, t_data *sprite, t_cord sprt,
 	}
 }
 
-void	new_sprite_to_bg_rotr(t_game *game, t_data *sprite, t_cord sprt,
+void	sprite_to_bg_rotr(t_game *game, t_data *sprite, t_cord sprt,
 		t_cord win)
 {
 	unsigned int	color;
@@ -91,7 +91,7 @@ void	new_sprite_to_bg_rotr(t_game *game, t_data *sprite, t_cord sprt,
 	}
 }
 
-void	new_sprite_to_bg_rotl(t_game *game, t_data *sprite, t_cord sprt,
+void	sprite_to_bg_rotl(t_game *game, t_data *sprite, t_cord sprt,
 		t_cord win)
 {
 	unsigned int	color;

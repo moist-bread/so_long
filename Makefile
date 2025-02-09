@@ -6,7 +6,7 @@
 #    By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 12:30:07 by rduro-pe          #+#    #+#              #
-#    Updated: 2025/02/03 14:02:23 by rduro-pe         ###   ########.fr        #
+#    Updated: 2025/02/06 16:46:47 by rduro-pe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,9 +87,11 @@ exe6: all
 exe7: all
 	./so_long ./maps/map7.ber
 
-
 exe8: all
 	./so_long ./maps/map8.ber
+
+exe9: all
+	./so_long ./maps/map9.ber
 	
 # ★☆★-‵,┊( STANDARD RULES )┊.´-★☆★
 clean:
