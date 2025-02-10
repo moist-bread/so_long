@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:55:59 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/28 08:11:28 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/02/10 11:35:16 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,14 @@
 // 5 sprites didnt malloc
 // 6 sprite imgs didnt create
 // 7 game bg didnt malloc
-// 8 game fg didnt mallocS
-// 9 bg fg img didnt create
+// 8 bg bg img didnt create
 // 10 end of program
 
-void	game_destroyer_3000(t_game *game, t_map *map, int status)
+void	game_destroyer(t_game *game, t_map *map, int status)
 {
 	free_map(map, map->heigth);
-	if (status >= 9)
-	{
-		if (game->bg->img)
-			mlx_destroy_image(game->mlx, game->bg->img);
-		if (game->fg->img)
-			mlx_destroy_image(game->mlx, game->fg->img);
-	}
 	if (status >= 8)
-		free(game->fg);
+		mlx_destroy_image(game->mlx, game->bg->img);
 	if (status >= 7)
 		free(game->bg);
 	if (status >= 6)
@@ -80,8 +72,6 @@ void	img_fg_destroyer(t_game *game)
 {
 	if (game->sprite->empty_1->img)
 		mlx_destroy_image(game->mlx, game->sprite->empty_1->img);
-	if (game->sprite->empty_2->img)
-		mlx_destroy_image(game->mlx, game->sprite->empty_2->img);
 	if (game->sprite->wall->img)
 		mlx_destroy_image(game->mlx, game->sprite->wall->img);
 	if (game->sprite->wall_m->img)
@@ -98,6 +88,8 @@ void	img_fg_destroyer(t_game *game)
 		mlx_destroy_image(game->mlx, game->sprite->chara_1->img);
 	if (game->sprite->chara_2->img)
 		mlx_destroy_image(game->mlx, game->sprite->chara_2->img);
+	if (game->sprite->chara_3->img)
+		mlx_destroy_image(game->mlx, game->sprite->chara_3->img);
 }
 
 void	sprite_destroyer(t_game *game)
@@ -126,8 +118,6 @@ void	sprite_fg_destroyer(t_game *game)
 {
 	if (game->sprite->empty_1)
 		free(game->sprite->empty_1);
-	if (game->sprite->empty_2)
-		free(game->sprite->empty_2);
 	if (game->sprite->wall)
 		free(game->sprite->wall);
 	if (game->sprite->wall_m)
@@ -144,5 +134,7 @@ void	sprite_fg_destroyer(t_game *game)
 		free(game->sprite->chara_1);
 	if (game->sprite->chara_2)
 		free(game->sprite->chara_2);
+	if (game->sprite->chara_3)
+		free(game->sprite->chara_3);
 	free(game->sprite);
 }

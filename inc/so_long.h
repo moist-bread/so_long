@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 10:31:49 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/02/09 10:01:03 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/02/10 11:34:44 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@
 
 // big asset paths
 # define EMPTY1 "./textures/big/empty_1.xpm"
-# define EMPTY2 "./textures/big/empty_2.xpm"
 # define WALL "./textures/big/wall.xpm"
 # define WALLM "./textures/big/wall_m.xpm"
 # define WALLC "./textures/big/wall_c.xpm"
@@ -45,10 +44,10 @@
 # define COLT "./textures/big/colt.xpm"
 # define CHARA1 "./textures/big/chara_1.xpm"
 # define CHARA2 "./textures/big/chara_2.xpm"
+# define CHARA3 "./textures/big/chara_3.xpm"
 
 // small asset paths
 # define SEMPTY1 "./textures/small/empty_1.xpm"
-# define SEMPTY2 "./textures/small/empty_2.xpm"
 # define SWALL "./textures/small/wall.xpm"
 # define SWALLM "./textures/small/wall_m.xpm"
 # define SWALLC "./textures/small/wall_c.xpm"
@@ -57,8 +56,21 @@
 # define SCOLT "./textures/small/colt.xpm"
 # define SCHARA1 "./textures/small/chara_1.xpm"
 # define SCHARA2 "./textures/small/chara_2.xpm"
+# define SCHARA3 "./textures/small/chara_3.xpm"
 
+// colors
 # define TRANSPARENT 0xFF000000
+# define DEF "\e[0m"
+
+# define YEL "\e[0;33m"
+# define GRN "\e[0;32m"
+# define CYN "\e[0;36m"
+# define BLK "\e[0;30m"
+# define HCYN "\e[0;96m"
+
+// backgrounds
+# define CYNB "\e[46m"
+# define GRNB "\e[42m"
 
 // STRUCTS
 typedef struct s_cord
@@ -102,7 +114,6 @@ typedef struct s_sprt
 	t_data	*button;
 	t_data	*arrow;
 	t_data	*empty_1;
-	t_data	*empty_2;
 	t_data	*wall;
 	t_data	*wall_m;
 	t_data	*wall_c;
@@ -111,6 +122,7 @@ typedef struct s_sprt
 	t_data	*colt;
 	t_data	*chara_1;
 	t_data	*chara_2;
+	t_data	*chara_3;
 }			t_sprt;
 
 typedef struct s_game
@@ -124,15 +136,16 @@ typedef struct s_game
 	int		chara_dir;
 	t_sprt	*sprite;
 	t_data	*bg;
-	t_data	*fg;
 	t_map	*map;
 }			t_game;
 
 // TBD
 
 // MAIN
-void		game_start(t_map *map);
+void		main_menu(void);
+void		main_menu_content(void);
 void		sprite_checker(t_map *map);
+void		game_start(t_map *map);
 
 // MAP PARSING
 int			map_parsing(char *map_file, t_map **map);
@@ -173,7 +186,7 @@ void		get_sprite_data_fg(t_game *game);
 void		get_sprite_data_extra(t_game *game);
 
 // DESTROYERS
-void		game_destroyer_3000(t_game *game, t_map *map, int status);
+void		game_destroyer(t_game *game, t_map *map, int status);
 void		img_destroyer(t_game *game);
 void		img_fg_destroyer(t_game *game);
 void		sprite_destroyer(t_game *game);
@@ -193,8 +206,7 @@ void		put_sprite(t_game *game, int y, int x, int type);
 void		wall_selector(t_game *game, int y, int x);
 
 // SPRITE TO BG
-void		sprite_to_bg(t_game *game, t_data *sprite, t_cord sprt,
-				t_cord win);
+void		sprite_to_bg(t_game *game, t_data *sprite, t_cord sprt, t_cord win);
 void		sprite_to_bg_vflip(t_game *game, t_data *sprite, t_cord sprt,
 				t_cord win);
 void		sprite_to_bg_hflip(t_game *game, t_data *sprite, t_cord sprt,

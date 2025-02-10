@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:05:32 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/08 13:05:45 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/02/10 00:16:06 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int	make_map(int fd, t_map *map)
 		map->map[i] = map_row;
 	}
 	map->map[i] = NULL;
-	print_map(map);
 	return (0);
 }
 

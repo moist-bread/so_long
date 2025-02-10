@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 14:15:02 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/28 07:46:55 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/02/10 11:38:12 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 void	set_sprites_big(t_game *game, int gap)
 {
 	set_sprites_both(game, gap);
-	ft_printf("setting big sprites (small map)\n");
+	// ft_printf("setting big sprites (small map)\n");
 	game->sprite->empty_1->img = mlx_xpm_file_to_image(game->mlx, EMPTY1,
-			&game->size, &game->size);
-	game->sprite->empty_2->img = mlx_xpm_file_to_image(game->mlx, EMPTY2,
 			&game->size, &game->size);
 	game->sprite->wall->img = mlx_xpm_file_to_image(game->mlx, WALL,
 			&game->size, &game->size);
@@ -36,16 +34,16 @@ void	set_sprites_big(t_game *game, int gap)
 			&game->size, &game->size);
 	game->sprite->chara_2->img = mlx_xpm_file_to_image(game->mlx, CHARA2,
 			&game->size, &game->size);
+	game->sprite->chara_3->img = mlx_xpm_file_to_image(game->mlx, CHARA3,
+			&game->size, &game->size);
 	game->size = 90;
 }
 
 void	set_sprites_small(t_game *game, int gap)
 {
 	set_sprites_both(game, gap);
-	ft_printf("setting small bg sprites (big map)\n");
+	// ft_printf("setting small bg sprites (big map)\n");
 	game->sprite->empty_1->img = mlx_xpm_file_to_image(game->mlx, SEMPTY1,
-			&game->size, &game->size);
-	game->sprite->empty_2->img = mlx_xpm_file_to_image(game->mlx, SEMPTY2,
 			&game->size, &game->size);
 	game->sprite->wall->img = mlx_xpm_file_to_image(game->mlx, SWALL,
 			&game->size, &game->size);
@@ -63,12 +61,14 @@ void	set_sprites_small(t_game *game, int gap)
 			&game->size, &game->size);
 	game->sprite->chara_2->img = mlx_xpm_file_to_image(game->mlx, SCHARA2,
 			&game->size, &game->size);
+	game->sprite->chara_3->img = mlx_xpm_file_to_image(game->mlx, SCHARA3,
+			&game->size, &game->size);
 	game->size = 45;
 }
 
 void	set_sprites_both(t_game *game, int gap)
 {
-	ft_printf("setting overlap sprites\n");
+	// ft_printf("setting overlap sprites\n");
 	game->sprite->bord->img = mlx_xpm_file_to_image(game->mlx, BORD,
 			&game->size, &game->size);
 	game->sprite->bord_c->img = mlx_xpm_file_to_image(game->mlx, BORDC,

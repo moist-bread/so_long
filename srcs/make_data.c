@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 14:12:21 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/27 14:17:52 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/02/10 11:36:44 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	make_sprite_data(t_game *game)
 {
-	ft_printf("mallocing sprite data\n");
+	// ft_printf("mallocing sprite data\n");
 	game->sprite->bord = malloc(sizeof(t_data));
 	game->sprite->bord_c = malloc(sizeof(t_data));
 	game->sprite->bevel = malloc(sizeof(t_data));
@@ -24,7 +24,6 @@ void	make_sprite_data(t_game *game)
 	game->sprite->button = malloc(sizeof(t_data));
 	game->sprite->arrow = malloc(sizeof(t_data));
 	game->sprite->empty_1 = malloc(sizeof(t_data));
-	game->sprite->empty_2 = malloc(sizeof(t_data));
 	game->sprite->wall = malloc(sizeof(t_data));
 	game->sprite->wall_m = malloc(sizeof(t_data));
 	game->sprite->wall_c = malloc(sizeof(t_data));
@@ -33,6 +32,7 @@ void	make_sprite_data(t_game *game)
 	game->sprite->colt = malloc(sizeof(t_data));
 	game->sprite->chara_1 = malloc(sizeof(t_data));
 	game->sprite->chara_2 = malloc(sizeof(t_data));
+	game->sprite->chara_3 = malloc(sizeof(t_data));
 	data_making_checker(game, 1);
 }
 
@@ -45,28 +45,28 @@ void	data_making_checker(t_game *game, int type)
 			|| !game->sprite->bevel_c || !game->sprite->speaker
 			|| !game->sprite->logo || !game->sprite->button
 			|| !game->sprite->arrow || !game->sprite->empty_1
-			|| !game->sprite->empty_2 || !game->sprite->wall
-			|| !game->sprite->wall_m || !game->sprite->wall_c
-			|| !game->sprite->exit_c || !game->sprite->exit_o
-			|| !game->sprite->colt || !game->sprite->chara_1
-			|| !game->sprite->chara_2)
-			game_destroyer_3000(game, game->map, 5);
+			|| !game->sprite->wall || !game->sprite->wall_m
+			|| !game->sprite->wall_c || !game->sprite->exit_c
+			|| !game->sprite->exit_o || !game->sprite->colt
+			|| !game->sprite->chara_1 || !game->sprite->chara_2
+			|| !game->sprite->chara_3)
+			game_destroyer(game, game->map, 5);
 	if (type == 2)
 		if (!game->sprite->bord->img || !game->sprite->bord_c->img
 			|| !game->sprite->bevel->img || !game->sprite->bevel_c->img
 			|| !game->sprite->speaker->img || !game->sprite->logo->img
 			|| !game->sprite->button->img || !game->sprite->arrow->img
-			|| !game->sprite->empty_1->img || !game->sprite->empty_2->img
-			|| !game->sprite->wall->img || !game->sprite->wall_m->img
-			|| !game->sprite->wall_c->img || !game->sprite->exit_c->img
-			|| !game->sprite->exit_o->img || !game->sprite->colt->img
-			|| !game->sprite->chara_1->img || !game->sprite->chara_2->img)
-		game_destroyer_3000(game, game->map, 6);
+			|| !game->sprite->empty_1->img || !game->sprite->wall->img
+			|| !game->sprite->wall_m->img || !game->sprite->wall_c->img
+			|| !game->sprite->exit_c->img || !game->sprite->exit_o->img
+			|| !game->sprite->colt->img || !game->sprite->chara_1->img
+			|| !game->sprite->chara_2->img || !game->sprite->chara_3->img)
+			game_destroyer(game, game->map, 6);
 }
 
 void	get_sprite_data_bg(t_game *game)
 {
-	ft_printf("getting bg sprite data\n");
+	// ft_printf("getting bg sprite data\n");
 	game->sprite->bord->addr = mlx_get_data_addr(game->sprite->bord->img,
 			&game->sprite->bord->bpp, &game->sprite->bord->len,
 			&game->sprite->bord->endian);
@@ -95,13 +95,10 @@ void	get_sprite_data_bg(t_game *game)
 
 void	get_sprite_data_fg(t_game *game)
 {
-	ft_printf("getting fg sprite data\n");
+	// ft_printf("getting fg sprite data\n");
 	game->sprite->empty_1->addr = mlx_get_data_addr(game->sprite->empty_1->img,
 			&game->sprite->empty_1->bpp, &game->sprite->empty_1->len,
 			&game->sprite->empty_1->endian);
-	game->sprite->empty_2->addr = mlx_get_data_addr(game->sprite->empty_2->img,
-			&game->sprite->empty_2->bpp, &game->sprite->empty_2->len,
-			&game->sprite->empty_2->endian);
 	game->sprite->wall->addr = mlx_get_data_addr(game->sprite->wall->img,
 			&game->sprite->wall->bpp, &game->sprite->wall->len,
 			&game->sprite->wall->endian);
@@ -124,11 +121,14 @@ void	get_sprite_data_fg(t_game *game)
 
 void	get_sprite_data_extra(t_game *game)
 {
-	ft_printf("getting extra sprite data\n");
+	// ft_printf("getting extra sprite data\n");
 	game->sprite->chara_1->addr = mlx_get_data_addr(game->sprite->chara_1->img,
 			&game->sprite->chara_1->bpp, &game->sprite->chara_1->len,
 			&game->sprite->chara_1->endian);
 	game->sprite->chara_2->addr = mlx_get_data_addr(game->sprite->chara_2->img,
 			&game->sprite->chara_2->bpp, &game->sprite->chara_2->len,
 			&game->sprite->chara_2->endian);
+	game->sprite->chara_3->addr = mlx_get_data_addr(game->sprite->chara_3->img,
+			&game->sprite->chara_3->bpp, &game->sprite->chara_3->len,
+			&game->sprite->chara_3->endian);
 }

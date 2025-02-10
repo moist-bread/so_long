@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 16:40:45 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/01/14 15:35:02 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/02/10 00:15:41 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,11 @@ void	map_full_check(t_map *map)
 	if (map->error)
 		return ;
 	map_elem_count(map);
-	print_map_elems(map);
 	if (map->error)
 		return ;
 	valid_path_check(map_flood_fill(map->ps_cord.y, map->ps_cord.x, map), map);
 	if (map->error)
 		return ;
-	print_map(map);
-	ft_printf("if there's a will there's a way\n\n");
 }
 
 void	map_wall_check(t_map *map)
