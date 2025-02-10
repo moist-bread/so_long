@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 08:57:12 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/02/10 11:42:53 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/02/10 12:21:44 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	player_sprite_selector(t_game *game)
 int	player_move(int key, t_game *game)
 {
 	if (key == 65307)
-		game_destroyer(game, game->map, 10);
+		game_destroyer(game, game->map, 9);
 	else if (key == 'w' || key == 65362)
 		move_check(game, 'y', -1, 'U');
 	else if (key == 'a' || key == 65361)
@@ -98,6 +98,6 @@ void	move_check(t_game *game, int axis, int dir, int key)
 
 int	close_x(t_game *game)
 {
-	game_destroyer(game, game->map, 10);
+	game_destroyer(game, game->map, 9);
 	return (0);
 }

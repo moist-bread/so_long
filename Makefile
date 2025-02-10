@@ -6,7 +6,7 @@
 #    By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 12:30:07 by rduro-pe          #+#    #+#              #
-#    Updated: 2025/02/06 16:46:47 by rduro-pe         ###   ########.fr        #
+#    Updated: 2025/02/10 12:16:26 by rduro-pe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,16 +16,12 @@ LIBFT = ./inc/libft/libft.a
 MLX = ./inc/minilibx_linux/libmlx.a
 
 
-# ★☆★-‵,┊( TO DO )┊.´-★☆★
-#	sprites
-
-
 # ★☆★-‵,┊( SOURCES AND OBJS )┊.´-★☆★
 MAIN    =   so_long_main.c 
 SOURCES =	map_parsing.c make_map.c map_full_check.c \
 			set_game.c set_sprites.c make_data.c \
 			destroyers.c make_bg.c make_fg.c sprite_to_bg.c sprite_to_helpers.c \
-			loop.c \
+			loop.c messages.c \
 
 SRCS_DIR = srcs
 SRCS = $(addprefix $(SRCS_DIR)/, $(SOURCES))

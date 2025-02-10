@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 10:31:49 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/02/10 11:34:44 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/02/10 12:23:34 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,10 +142,13 @@ typedef struct s_game
 // TBD
 
 // MAIN
-void		main_menu(void);
-void		main_menu_content(void);
 void		sprite_checker(t_map *map);
 void		game_start(t_map *map);
+
+// MESSAGES
+void		main_menu(void);
+void		main_menu_content(void);
+void		exit_message(int type);
 
 // MAP PARSING
 int			map_parsing(char *map_file, t_map **map);

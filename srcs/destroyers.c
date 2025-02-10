@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 13:55:59 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/02/10 11:35:16 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/02/10 12:23:39 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,12 @@
 // 6 sprite imgs didnt create
 // 7 game bg didnt malloc
 // 8 bg bg img didnt create
-// 10 end of program
+// 9 close window
+// 10 end of game
 
 void	game_destroyer(t_game *game, t_map *map, int status)
 {
+	exit_message(status);
 	free_map(map, map->heigth);
 	if (status >= 8)
 		mlx_destroy_image(game->mlx, game->bg->img);
@@ -48,7 +50,6 @@ void	game_destroyer(t_game *game, t_map *map, int status)
 
 void	img_destroyer(t_game *game)
 {
-	ft_printf("img destroyer 3000\n");
 	if (game->sprite->bord->img)
 		mlx_destroy_image(game->mlx, game->sprite->bord->img);
 	if (game->sprite->bord_c->img)
@@ -94,7 +95,6 @@ void	img_fg_destroyer(t_game *game)
 
 void	sprite_destroyer(t_game *game)
 {
-	ft_printf("sprite destroyer 3000\n");
 	if (game->sprite->bord)
 		free(game->sprite->bord);
 	if (game->sprite->bord_c)
