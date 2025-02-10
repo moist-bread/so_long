@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 16:15:33 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/02/10 12:16:53 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/02/10 15:59:25 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		return (2);
-	main_menu();
 	map_parsing(argv[1], &map);
+	main_menu(argv[1]);
 	sprite_checker(map);
 	game_start(map);
 	return (10);
@@ -30,9 +30,9 @@ void	sprite_checker(t_map *map)
 	int			fd;
 	int			i;
 	const char	*paths[28] = {BORD, BORDC, BVL, BVLC, SPKR, LOGO, BTN, ARRW,
-			EMPTY1, WALL, WALLM, WALLC, EXITC, EXITO, COLT, CHARA1, CHARA2,
-			CHARA3, SEMPTY1, SWALL, SWALLM, SWALLC, SEXITC, SEXITO, SCOLT,
-			SCHARA1, SCHARA2, SCHARA3};
+		EMPTY1, WALL, WALLM, WALLC, EXITC, EXITO, COLT, CHARA1, CHARA2,
+		CHARA3, SEMPTY1, SWALL, SWALLM, SWALLC, SEXITC, SEXITO, SCOLT,
+		SCHARA1, SCHARA2, SCHARA3};
 
 	i = -1;
 	while (++i < 28)

@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 16:02:16 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/02/09 10:02:25 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/02/10 15:32:55 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	add_decor(t_game *game)
 	if (game->map->heigth <= 16)
 		sprite_to_bg(game, game->sprite->arrow, (t_cord){180, 180},
 			(t_cord){game->size + game->gap + game->offset, 18 * game->size});
-	// ideal: 16 x 34
 }
 
 void	put_map(t_game *game, t_map *map)

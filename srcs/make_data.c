@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 14:12:21 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/02/10 11:36:44 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/02/10 15:32:40 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	make_sprite_data(t_game *game)
 {
-	// ft_printf("mallocing sprite data\n");
 	game->sprite->bord = malloc(sizeof(t_data));
 	game->sprite->bord_c = malloc(sizeof(t_data));
 	game->sprite->bevel = malloc(sizeof(t_data));
@@ -66,7 +65,6 @@ void	data_making_checker(t_game *game, int type)
 
 void	get_sprite_data_bg(t_game *game)
 {
-	// ft_printf("getting bg sprite data\n");
 	game->sprite->bord->addr = mlx_get_data_addr(game->sprite->bord->img,
 			&game->sprite->bord->bpp, &game->sprite->bord->len,
 			&game->sprite->bord->endian);
@@ -95,7 +93,6 @@ void	get_sprite_data_bg(t_game *game)
 
 void	get_sprite_data_fg(t_game *game)
 {
-	// ft_printf("getting fg sprite data\n");
 	game->sprite->empty_1->addr = mlx_get_data_addr(game->sprite->empty_1->img,
 			&game->sprite->empty_1->bpp, &game->sprite->empty_1->len,
 			&game->sprite->empty_1->endian);
@@ -121,7 +118,6 @@ void	get_sprite_data_fg(t_game *game)
 
 void	get_sprite_data_extra(t_game *game)
 {
-	// ft_printf("getting extra sprite data\n");
 	game->sprite->chara_1->addr = mlx_get_data_addr(game->sprite->chara_1->img,
 			&game->sprite->chara_1->bpp, &game->sprite->chara_1->len,
 			&game->sprite->chara_1->endian);

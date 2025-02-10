@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 08:57:12 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/02/10 12:21:44 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/02/10 15:32:15 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	move_check(t_game *game, int axis, int dir, int key)
 	if (key == 'L' || key == 'R')
 		game->chara_dir = key;
 	if (axis == 'y' && game->map->map[game->map->ps_cord.y
-		+ dir][game->map->ps_cord.x] != '1')
+			+ dir][game->map->ps_cord.x] != '1')
 	{
 		game->map->ps_cord.y += dir;
 	}

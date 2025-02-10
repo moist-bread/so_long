@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 16:38:04 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/02/03 14:09:40 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/02/10 15:31:51 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	row_len(char *str)
 void	valid_path_check(int seen_colt, t_map *map)
 {
 	if (seen_colt != map->colt || (map->map[map->exit_cord.y
-			+ 1][map->exit_cord.x] != 'O' && map->map[map->exit_cord.y
+				+ 1][map->exit_cord.x] != 'O' && map->map[map->exit_cord.y
 			+ 1][map->exit_cord.x] != 'c' && map->map[map->exit_cord.y
 			+ 1][map->exit_cord.x] != 'P' && map->map[map->exit_cord.y
 			- 1][map->exit_cord.x] != 'O' && map->map[map->exit_cord.y

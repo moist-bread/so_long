@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 22:06:56 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/02/10 11:27:22 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/02/10 15:36:21 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int	set_game(t_game **game, t_map *map)
 		game_destroyer(*game, map, 3);
 	set_assets(*game);
 	set_imgs(*game);
-	// ft_printf("PRELIMINAR SETTINGS ARE DONE\n\n");
 	return (0);
 }
 
@@ -58,17 +57,14 @@ void	set_assets(t_game *game)
 		set_sprites_small(game, 15);
 		game->offset = 45;
 	}
-	// ft_printf("set sprites %d (success)\n", game->size);
 	data_making_checker(game, 2);
 	get_sprite_data_bg(game);
 	get_sprite_data_fg(game);
 	get_sprite_data_extra(game);
-	// ft_printf("get sprite data(success)\n");
 }
 
 void	set_imgs(t_game *game)
 {
-	// ft_printf("mallocing back and fore ground data\n");
 	game->bg = malloc(sizeof(t_data));
 	if (!game->bg)
 		game_destroyer(game, game->map, 7);
