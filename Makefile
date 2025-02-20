@@ -6,7 +6,7 @@
 #    By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 12:30:07 by rduro-pe          #+#    #+#              #
-#    Updated: 2025/02/10 15:50:27 by rduro-pe         ###   ########.fr        #
+#    Updated: 2025/02/20 10:25:53 by rduro-pe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,9 +36,6 @@ OBJS_MAIN = $(addprefix $(OBJS_DIR)/, $(MAIN:.c=.o))
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 MLXFLAGS = -L ./inc/minilibx_linux -lmlx_Linux -lX11 -lXext
-#-Lminilibx-linux   -lmlx_Linux -lX11 -lXext
-#-L ./libs/minilibx -lmlx -Ilmlx -lXext -lX11
-#-L/usr/lib         -Imlx_linux -lXext -lX11 -lm -lz
 
 
 # ★☆★-‵,┊( MAIN RULES )┊.´-★☆★
@@ -62,6 +59,29 @@ $(MLX):
 	@make -C ./inc/minilibx_linux -s
 	$(M_ARCMLX)
 
+
+# ★☆★-‵,┊( STANDARD RULES )┊.´-★☆★
+clean:
+	@make clean -C ./inc/libft -s
+	$(M_REMMLXOBJS)
+	@make clean -C ./inc/minilibx_linux -s
+	$(M_REMOBJS)
+	@rm -rf $(OBJS_DIR)
+
+fclean: clean
+	$(M_REMLIB)
+	@rm -rf $(LIBFT)
+	$(M_REMMLX)
+	$(M_REM)
+	@rm -rf $(NAME)
+
+re:	fclean all
+	@echo "Re-Done!!"
+
+.PHONY: all clean fclean re bonus
+
+
+# ★☆★-‵,┊( EXECUTION RULES )┊.´-★☆★
 exe1: all
 	./so_long ./maps/map1.ber
 
@@ -91,29 +111,10 @@ exe9: all
 
 levels: all
 	./so_long ./maps/map1.ber || ./so_long ./maps/map2.ber ||\
-	./so_long ./maps/map3.ber || ./so_long ./maps/map4.ber ||\
-	./so_long ./maps/map5.ber || ./so_long ./maps/map6.ber
+	./so_long ./maps/map3.ber || ./so_long ./maps/map5.ber ||\
+	./so_long ./maps/map6.ber || ./so_long ./maps/map7.ber ||\
+	./so_long ./maps/map8.ber
 	
-# ★☆★-‵,┊( STANDARD RULES )┊.´-★☆★
-clean:
-	@make clean -C ./inc/libft -s
-	$(M_REMMLXOBJS)
-	@make clean -C ./inc/minilibx_linux -s
-	$(M_REMOBJS)
-	@rm -rf $(OBJS_DIR)
-
-fclean: clean
-	$(M_REMLIB)
-	@rm -rf $(LIBFT)
-	$(M_REMMLX)
-	$(M_REM)
-	@rm -rf $(NAME)
-
-re:	fclean all
-	@echo "Re-Done!!"
-
-.PHONY: all clean fclean re bonus
-
 
 # ★☆★-‵,┊( COSMETICS )┊.´-★☆★
 
@@ -132,9 +133,6 @@ CYNB	=	\e[46m
 YELB	=	\e[43m
 MAGHB	=	\e[0;105m
 
-#-‵,┊ names
-PH = placeholder
-
 #-‵,┊ messages
 M_COMOBJS = @echo "$(GRY)-->┊$(GRN)  Compiling: $(BCYN) $(NAME)/objs $(GRY)$(DEF)"
 M_COMLIB = @echo "$(GRY)-->┊$(GRN)  Compiling: $(DEF)$(YELB) libft.a $(GRY)$(DEF)"
@@ -147,18 +145,3 @@ M_COMMLXOBJS = @echo "$(GRY)-->┊$(GRN)  Compiling: $(BHMAG) libmlx.a/objs $(GR
 M_ARCMLX = @echo "$(GRY)-->┊$(YEL)  Archiving: $(DEF)$(MAGHB) libmlx.a $(GRY)$(DEF)"
 M_REMMLX = @echo "$(GRY)-->┊$(BLU)  Removing: $(DEF)$(MAGHB) libmlx.a $(GRY)$(DEF)"
 M_REMMLXOBJS = @echo "$(GRY)-->┊$(BLU)  Removing: $(BHMAG) libmlx.a/objs $(GRY)$(DEF)"
-
-
-#-‵,┊ tester
-test:
-	$(M_COMOBJS)
-	$(M_COMLIB)
-	$(M_COM)
-	$(M_COMBONUS)
-	$(M_REMOBJS)
-	$(M_REMLIB)
-	$(M_REM)
-	$(M_COMMLXOBJS)
-	$(M_ARCMLX)
-	$(M_REMMLX)
-	$(M_REMMLXOBJS)	

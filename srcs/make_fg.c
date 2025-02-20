@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 16:02:16 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/02/10 15:32:55 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/02/20 10:10:44 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ void	put_sprite(t_game *game, int y, int x, int type)
 		colorblock_to_bg(game, 0xADC7C7, (t_cord){game->size, game->size},
 			(t_cord){((x + 1) * game->size) + game->gap + game->offset, (y + 1)
 			* game->size});
-	else if (type == 'O' || type == 'c' || type == 'E' || type == 'P')
+	else if (type == 'O' || type == '0' || type == 'c' || type == 'E'
+		|| type == 'P')
 		sprite_to_bg(game, game->sprite->empty_1, (t_cord){game->size,
 			game->size}, (t_cord){((x + 1) * game->size) + game->gap
 			+ game->offset, (y + 1) * game->size});

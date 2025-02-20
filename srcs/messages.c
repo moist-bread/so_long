@@ -21,7 +21,7 @@ void	main_menu(char *input)
 	ft_printf("\n\n" HCYN "▖▞▙▗" DEF "\t\t\t\t\t\t " HCYN "▖▞▙▗" DEF);
 	ft_printf("\n" HCYN "▖▞▙▗ \t\t\t\t\t\t ▖▞▙▗" DEF);
 	ft_printf("\n" HCYN "▚▛▘▜▝▞▟▙▘▖▞▙▗▚▛▘▜▝▞▟▛▙▘▖▞▙▗▞▙▗▚"
-				"▛▘▜▝▞▟▙▘▖▞▙▗▟▙▘▖▞▙▗▚▛▘" DEF "\n\n\t");
+		"▛▘▜▝▞▟▙▘▖▞▙▗▟▙▘▖▞▙▗▚▛▘" DEF "\n\n\t");
 	ft_printf(YEL "HIT " CYN "__ENTER__" YEL " TO START THE GAME ..." DEF);
 	line = get_next_line(1);
 	free(line);
@@ -32,11 +32,12 @@ void	main_menu_content(void)
 {
 	ft_printf(YEL "\n\n\tEAGERNESS ENTERTAINMENT PRESENTS ...\n\n" DEF);
 	ft_printf("\n" HCYN "▚▛▘▜▝▞▟▙▘▖▞▙▗▚▛▘▜▝▞▟▛▙▘▖▞▙▗▞▙▗▚"
-				"▛▘▜▝▞▟▙▘▖▞▙▗▟▙▘▖▞▙▗▚▛▘" DEF);
+		"▛▘▜▝▞▟▙▘▖▞▙▗▟▙▘▖▞▙▗▚▛▘" DEF);
 	ft_printf("\n" HCYN "▖▞▙▗ \t\t\t\t\t\t ▖▞▙▗" DEF);
 	ft_printf("\n" HCYN "▖▞▙▗" DEF "\t\t\t\t\t\t " HCYN "▖▞▙▗" DEF);
 	ft_printf("\n" HCYN "▖▞▙▗\t" DEF);
-	ft_printf(GRN "› OUR " YEL "BRAND NEW" GRN " HANDHELD: " BLK CYNB " EAGN " DEF);
+	ft_printf(GRN "› OUR " YEL "BRAND NEW" GRN " HANDHELD: "
+		BLK CYNB " EAGN " DEF);
 	ft_printf("\t " HCYN "▖▞▙▗" DEF);
 	ft_printf("\n" HCYN "▖▞▙▗" DEF "\t\t\t\t\t\t " HCYN "▖▞▙▗" DEF);
 	ft_printf("\n" HCYN "▖▞▙▗\t" DEF);
@@ -53,7 +54,7 @@ void	main_menu_content(void)
 	ft_printf("\n" HCYN "▖▞▙▗" DEF "\t\t\t\t\t\t " HCYN "▖▞▙▗" DEF);
 	ft_printf("\n" HCYN "▖▞▙▗ \t\t\t\t\t\t ▖▞▙▗" DEF);
 	ft_printf("\n" HCYN "▚▛▘▜▝▞▟▙▘▖▞▙▗▚▛▘▜▝▞▟▛▙▘▖▞▙▗▞▙▗▚"
-				"▛▘▜▝▞▟▙▘▖▞▙▗▟▙▘▖▞▙▗▚▛▘" DEF);
+		"▛▘▜▝▞▟▙▘▖▞▙▗▟▙▘▖▞▙▗▚▛▘" DEF);
 }
 
 void	main_menu_instruct(char *input)
