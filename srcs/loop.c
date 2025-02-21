@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 08:57:12 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/02/10 15:32:15 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/02/20 12:36:01 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	render_game(t_game *game)
 	}
 	if (game->collected == game->map->colt)
 	{
-		put_sprite(game, game->map->exit_cord.y, game->map->exit_cord.x, 'e');
+		put_sprite(game, game->map->exit_cord.y, game->map->exit_cord.x, 'E');
 		game->collected++;
 	}
 	if (game->collected > game->map->colt
@@ -81,18 +81,25 @@ int	player_move(int key, t_game *game)
 
 void	move_check(t_game *game, int axis, int dir, int key)
 {
+	if (game->moves + 1 == 2147483647)
+	{
+		game->moves = 0;
+		ft_printf(YEL "\tmoves over flow" CYN " reset\n" DEF);
+	}
 	if (key == 'L' || key == 'R')
 		game->chara_dir = key;
 	if (axis == 'y' && game->map->map[game->map->ps_cord.y
 			+ dir][game->map->ps_cord.x] != '1')
 	{
 		game->map->ps_cord.y += dir;
+		ft_printf(YEL "\tmoves:" CYN " %d\n" DEF, ++game->moves);
 	}
 	else if (axis == 'x'
 		&& game->map->map[game->map->ps_cord.y][game->map->ps_cord.x
 		+ dir] != '1')
 	{
 		game->map->ps_cord.x += dir;
+		ft_printf(YEL "\tmoves:" CYN " %d\n" DEF, ++game->moves);
 	}
 }
 

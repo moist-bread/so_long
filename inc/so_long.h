@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 10:31:49 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/02/10 16:00:18 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/02/20 12:16:53 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,7 @@ typedef struct s_game
 	int		size;
 	int		collected;
 	int		chara_dir;
+	int		moves;
 	t_sprt	*sprite;
 	t_data	*bg;
 	t_map	*map;

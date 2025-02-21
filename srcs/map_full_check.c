@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 16:40:45 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/02/10 00:15:41 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/02/20 12:14:33 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	map_flood_fill(int y, int x, t_map *map)
 
 	if (y < 1 || y >= map->heigth - 1 || x < 1 || x >= map->width - 1
 		|| (map->map[y][x] != '0' && map->map[y][x] != 'C'
-			&& map->map[y][x] != 'P'))
+			&& map->map[y][x] != 'P' && map->map[y][x] != 'E'))
 		return (0);
 	colt = 0;
 	if (map->map[y][x] == 'C')
@@ -100,6 +100,8 @@ int	map_flood_fill(int y, int x, t_map *map)
 	}
 	else if (map->map[y][x] == '0')
 		map->map[y][x] = 'O';
+	else if (map->map[y][x] == 'E')
+		map->map[y][x] = 'e';
 	colt += map_flood_fill(y + 1, x, map);
 	colt += map_flood_fill(y - 1, x, map);
 	colt += map_flood_fill(y, x - 1, map);

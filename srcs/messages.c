@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 12:15:04 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/02/19 10:34:32 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/02/20 12:23:05 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,10 @@ void	exit_message(int type)
 {
 	if (type == 10)
 	{
-		ft_printf(YEL "\tend of game yippe\n\n" DEF);
+		ft_printf(YEL "\n\tsuccess!! congrats\n\n" DEF);
 	}
 	else
 	{
-		ft_printf(YEL "\thope you return!!\n\n" DEF);
+		ft_printf(YEL "\n\thope you return soon!!\n\n" DEF);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 22:06:56 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/02/10 15:36:21 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/02/20 12:17:28 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	set_game(t_game **game, t_map *map)
 void	set_assets(t_game *game)
 {
 	game->chara_dir = 'R';
+	game->moves = 0;
 	game->sprite = malloc(sizeof(t_sprt));
 	if (!game->sprite)
 		game_destroyer(game, game->map, 4);
