@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:05:32 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/02/10 00:16:06 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/02/22 13:18:18 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	free_map(t_map *map, int max)
 	int	i;
 
 	i = 0;
-	if (map->error != 1 && map->heigth > 2)
+	if (map->error != 1 && map->error != 3 && map->heigth > 2)
 	{
 		while (i <= max)
 			free(map->map[i++]);

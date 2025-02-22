@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 15:31:05 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/02/09 10:02:58 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/02/22 13:45:09 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	put_border(t_game *game, t_map *map)
 	int	x;
 
 	if (map->heigth > 10 || map->width > 19)
-		y = 24;
+		y = 23;
 	else
-		y = map->heigth + 2;
+		y = map->heigth + 1;
 	x = 0;
 	while ((!game->gap && ++x < map->width + 2) || (game->gap
 			&& ((game->size == 90 && ++x < 21) || (game->size == 45
@@ -29,7 +29,7 @@ void	put_border(t_game *game, t_map *map)
 		sprite_to_bg_rotl(game, game->sprite->bord, (t_cord){90, game->size},
 			(t_cord){x * game->size, 0});
 		sprite_to_bg_rotr(game, game->sprite->bord, (t_cord){90, game->size},
-			(t_cord){(x * game->size), (y - 1) * game->size});
+			(t_cord){(x * game->size), y * game->size});
 	}
 	while (--y >= 0)
 	{

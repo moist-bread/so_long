@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 08:57:12 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/02/20 12:36:01 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/02/22 13:44:07 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,15 +81,15 @@ int	player_move(int key, t_game *game)
 
 void	move_check(t_game *game, int axis, int dir, int key)
 {
-	if (game->moves + 1 == 2147483647)
+	if (game->moves == 2147483647)
 	{
 		game->moves = 0;
-		ft_printf(YEL "\tmoves over flow" CYN " reset\n" DEF);
+		ft_printf(YEL "\tmoves overflow" CYN " reset\n" DEF);
 	}
 	if (key == 'L' || key == 'R')
 		game->chara_dir = key;
 	if (axis == 'y' && game->map->map[game->map->ps_cord.y
-			+ dir][game->map->ps_cord.x] != '1')
+		+ dir][game->map->ps_cord.x] != '1')
 	{
 		game->map->ps_cord.y += dir;
 		ft_printf(YEL "\tmoves:" CYN " %d\n" DEF, ++game->moves);

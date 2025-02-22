@@ -6,7 +6,7 @@
 /*   By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 16:38:04 by rduro-pe          #+#    #+#             */
-/*   Updated: 2025/02/10 15:31:51 by rduro-pe         ###   ########.fr       */
+/*   Updated: 2025/02/22 13:48:18 by rduro-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,22 @@ int	map_parsing(char *map_file, t_map **map)
 
 	*map = set_map_struct();
 	if (!*map)
-		return (error_exit(1, *map), 1);
+		error_exit(1, *map);
 	map_fd = open(map_file, O_RDONLY);
 	if (map_fd < 3 || ft_strncmp(".ber", map_file + ft_strlen(map_file) - 4, 4))
 		return (close(map_fd), error_exit(2, *map), 2);
 	row_check(map_fd, *map);
 	close(map_fd);
 	if ((*map)->heigth <= 2 || (*map)->width <= 2 || (*map)->error)
-		return (error_exit(3, *map), 3);
+		error_exit(3, *map);
 	if ((*map)->heigth > 22 || (*map)->width > 38)
-		return (error_exit(3, *map), 3);
+		error_exit(3, *map);
 	map_fd = open(map_file, O_RDONLY);
 	if (make_map(map_fd, *map))
 		return (close(map_fd), error_exit(1, *map), 1);
 	map_full_check(*map);
 	if (!close(map_fd) && (*map)->error)
-		return (error_exit((*map)->error, *map), 4);
+		error_exit((*map)->error, *map);
 	return (0);
 }
 
@@ -68,7 +68,7 @@ int	row_len(char *str)
 void	valid_path_check(int seen_colt, t_map *map)
 {
 	if (seen_colt != map->colt || (map->map[map->exit_cord.y
-				+ 1][map->exit_cord.x] != 'O' && map->map[map->exit_cord.y
+			+ 1][map->exit_cord.x] != 'O' && map->map[map->exit_cord.y
 			+ 1][map->exit_cord.x] != 'c' && map->map[map->exit_cord.y
 			+ 1][map->exit_cord.x] != 'P' && map->map[map->exit_cord.y
 			- 1][map->exit_cord.x] != 'O' && map->map[map->exit_cord.y
@@ -100,12 +100,12 @@ void	error_exit(int ret, t_map *map)
 		ft_printf("\nMemory Allocation failed\n");
 	else if (ret == 2)
 		ft_printf("\nGiven file isn't .ber and or doesn't exists\n");
+	else if (map->error == 3)
+		ft_printf("\nGiven Map isn't rectangular\n");
 	else if (map->heigth <= 2)
 		ft_printf("\nGiven Map doesn't have enough rows or columns\n");
 	else if (map->heigth > 22 || map->width > 38)
 		ft_printf("\nGiven Map is too big (limit of 38x22)\n");
-	else if (ret == 3)
-		ft_printf("\nGiven Map isn't rectangular\n");
 	else if (ret == 4)
 		ft_printf("\nGiven Map doesn't have surrounding walls\n");
 	else if (ret == 5)

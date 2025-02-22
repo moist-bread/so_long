@@ -6,7 +6,7 @@
 #    By: rduro-pe <rduro-pe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 12:30:07 by rduro-pe          #+#    #+#              #
-#    Updated: 2025/02/20 10:25:53 by rduro-pe         ###   ########.fr        #
+#    Updated: 2025/02/22 13:42:47 by rduro-pe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ OBJS_MAIN = $(addprefix $(OBJS_DIR)/, $(MAIN:.c=.o))
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 MLXFLAGS = -L ./inc/minilibx_linux -lmlx_Linux -lX11 -lXext
+VAL = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -s
 
 
 # ★☆★-‵,┊( MAIN RULES )┊.´-★☆★
@@ -91,9 +92,6 @@ exe2: all
 exe3: all
 	./so_long ./maps/map3.ber
 
-exe4: all
-	./so_long ./maps/map4.ber
-
 exe5: all
 	./so_long ./maps/map5.ber
 
@@ -114,7 +112,25 @@ levels: all
 	./so_long ./maps/map3.ber || ./so_long ./maps/map5.ber ||\
 	./so_long ./maps/map6.ber || ./so_long ./maps/map7.ber ||\
 	./so_long ./maps/map8.ber
+
+val_levels: all
+	$(VAL) ./so_long ./maps/map1.ber || $(VAL) ./so_long ./maps/map2.ber ||\
+	$(VAL) ./so_long ./maps/map3.ber || $(VAL) ./so_long ./maps/map5.ber ||\
+	$(VAL) ./so_long ./maps/map6.ber || $(VAL) ./so_long ./maps/map7.ber ||\
+	$(VAL) ./so_long ./maps/map8.ber
 	
+map_errors: all
+	$(VAL) ./so_long ./test_maps/error_map_1.ber ||\
+	$(VAL) ./so_long ./test_maps/error_map_2.ber ||\
+	$(VAL) ./so_long ./test_maps/error_map_3.ber ||\
+	$(VAL) ./so_long ./test_maps/error_map_4.ber ||\
+	$(VAL) ./so_long ./test_maps/error_map_5.ber ||\
+	$(VAL) ./so_long ./test_maps/error_map_6.ber ||\
+	$(VAL) ./so_long ./test_maps/error_map_7.ber ||\
+	$(VAL) ./so_long ./test_maps/error_map_8.ber ||\
+	$(VAL) ./so_long ./test_maps/error_map_9.txt ||\
+	$(VAL) ./so_long ./test_maps/error_mapaaa.ber	
+
 
 # ★☆★-‵,┊( COSMETICS )┊.´-★☆★
 
