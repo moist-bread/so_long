@@ -68,7 +68,7 @@ int	row_len(char *str)
 void	valid_path_check(int seen_colt, t_map *map)
 {
 	if (seen_colt != map->colt || (map->map[map->exit_cord.y
-			+ 1][map->exit_cord.x] != 'O' && map->map[map->exit_cord.y
+				+ 1][map->exit_cord.x] != 'O' && map->map[map->exit_cord.y
 			+ 1][map->exit_cord.x] != 'c' && map->map[map->exit_cord.y
 			+ 1][map->exit_cord.x] != 'P' && map->map[map->exit_cord.y
 			- 1][map->exit_cord.x] != 'O' && map->map[map->exit_cord.y

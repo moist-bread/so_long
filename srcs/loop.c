@@ -89,7 +89,7 @@ void	move_check(t_game *game, int axis, int dir, int key)
 	if (key == 'L' || key == 'R')
 		game->chara_dir = key;
 	if (axis == 'y' && game->map->map[game->map->ps_cord.y
-		+ dir][game->map->ps_cord.x] != '1')
+			+ dir][game->map->ps_cord.x] != '1')
 	{
 		game->map->ps_cord.y += dir;
 		ft_printf(YEL "\tmoves:" CYN " %d\n" DEF, ++game->moves);
