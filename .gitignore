@@ -1,0 +1,11 @@
+*/.vscode
+.vscode
+*.out
+*.o
+*.a
+*.out
+*.json
+*Zone.Identifier
+/objs
+so_long
+inc/minilibx_linux/test/mlx-test
