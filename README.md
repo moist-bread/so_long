@@ -16,8 +16,22 @@ _**so_long**_ is the very first graphical project in the 42 cursus. Taking advan
 
 The concept of my so_long is based on the handheld style and feel of the gameboy. In it you play as an SDCARD reader and collect SDCARDS. After collecting them all you can escape through the vent. As simple as that.
 
-![video_demo_exe2](/demo/video_demo_exe2.gif)
-![window_demo_exe3](/demo/window_demo_exe3.png)
+<img
+	src="demo/video_demo_exe2.gif"
+	alt="video_demo_exe2"
+	style="display: block; 
+           margin-left: auto;
+           margin-right: auto;
+           width: auto;">
+</img>
+<img
+	src="demo/window_demo_exe3.png"
+	alt="window_demo_exe3"
+	style="display: block; 
+           margin-left: auto;
+           margin-right: auto;
+           width: auto;">
+</img>
 
 If you want to try this out for yourself you can simply clone this repository and do the following:
 
@@ -27,7 +41,14 @@ make levels
 
 That will compile the program and run it sequentially with 8 maps I created.
 
-![terminal_demo](/demo/terminal_demo.png)
+<img
+	src="demo/terminal_demo.png"
+	alt="terminal_demo"
+	style="display: block; 
+           margin-left: auto;
+           margin-right: auto;
+           width: auto;">
+</img>
 
 ## INPUT AND MAPS
 
@@ -57,12 +78,35 @@ As previously mentioned the concept of this so_long is based on the gameboy, whi
 
 For the small maps to not be too little to see I created two sets of sprites (45x45, 90x90) from which the program would pick and adapt depending on the size of the given map!
 
-![sprite_sheet](/demo/sprite_sheet.png)
+<img
+	src="demo/sprite_sheet.png"
+	alt="sprite_sheet"
+	style="display: block; 
+           margin-left: auto;
+           margin-right: auto;
+           width: 80%;">
+</img>
 
 There's also a few extra details like buttons and a logo that show up (or not) also based on the mapsize.
 
-![window_demo_exe7](/demo/window_demo_exe2.png)
+<img
+	src="demo/window_demo_exe2.png"
+	alt="window_demo_exe7"
+	style="display: block; 
+           margin-left: auto;
+           margin-right: auto;
+           width: auto;">
+</img>
 
 ## CONCLUSION
 
 Despite the simple premise I learnt a lot from this project, not only how to do the most whislt using the least amount of sprites, like how it was usual for games in older consoles with hardware limitations, by flipping and rotating them inside the program. But also technical things such as the full potential of **Makefile rules** and the utility of **compound literals**. 
+
+#### 🦾 POSSIBLE FUTURE IMPROVEMENTS:
+
+* Adding fps and animations
+* Adding enemies
+* Less use of the heap and more use of the stack
+* Use of sprite sheets instead of individual sprites
+* Aesthetic improvement to buttons and logo assets
+* Make the buttons on screen visually change when you're moving
